@@ -1,0 +1,9 @@
+# modules
+node_modules
+dist
+
+# environment file
+.env
+
+# misc
+.eslintcache
