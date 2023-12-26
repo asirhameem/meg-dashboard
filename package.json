@@ -1,0 +1,65 @@
+{
+  "name": "meg-dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard application for MEG build with React, Vite, and TypeScript",
+  "keywords": [
+    "meg",
+    "dashboard"
+  ],
+  "author": "Md. Estiak Ahmed",
+  "homepage": "https://github.com/asirhameem/meg-dashboard#README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asirhameem/meg-dashboard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/asirhameem/meg-dashboard/issues"
+  },
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": "20.10.0",
+    "npm": "10.2.3"
+  },
+  "man": "main.tsx",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint:check": "eslint --ignore-path .eslintignore \"src/**/*.+(js|jsx|ts|tsx|json)\"",
+    "lint:fix": "eslint \"src/**/*.+(js|jsx|ts|tsx|json)\" --fix",
+    "lint:staged": "eslint --ignore-path .eslintignore \"src/**/*.+(js|jsx|ts|tsx|json)\" --fix",
+    "prettier:check": "prettier --ignore-path .prettierignore --check \"src/**/*.+(js|jsx|ts|tsx|css|scss|json)\"",
+    "prettier:fix": "prettier --ignore-path .prettierignore --write \"**/*.+(js|jsx|ts|tsx|css|scss|json)\"",
+    "prettier:staged": "prettier --ignore-path .prettierignore --write",
+    "lint-prettier:check": "npm run lint:check && npm run prettier:check",
+    "lint-prettier:fix": "npm run lint:fix && npm run prettier:fix",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
+    "*.{js,jsx,ts,tsx,css,scss,md}": "prettier --write"
+  }
+}
