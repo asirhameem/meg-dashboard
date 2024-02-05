@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { toast } from "react-toastify";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_API_BASE_URL,
@@ -18,7 +19,7 @@ export const apiSlice = createApi({
   baseQuery: async (args, api, extraOptions) => {
     const result = await baseQuery(args, api, extraOptions);
     if (result?.error?.status === 401) {
-      console.log(result?.error?.data?.error);
+      toast.error(result?.error?.data?.error);
     }
     return result;
   },
