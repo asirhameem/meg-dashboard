@@ -1,9 +1,14 @@
-function App() {
+import { Provider } from "react-redux";
+import { store } from "../store/store.ts";
+import Routes from "../routes";
+const App = () => {
   return (
     <>
-      <h1>MEG Dashboard</h1>
+      <Provider store={store}>
+        <Routes />
+      </Provider>
     </>
   );
-}
+};
 
 export default App;
