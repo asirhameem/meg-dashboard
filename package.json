@@ -34,8 +34,7 @@
     "prettier:fix": "prettier --ignore-path .prettierignore --write \"**/*.+(js|jsx|ts|tsx|css|scss|json)\"",
     "prettier:staged": "prettier --ignore-path .prettierignore --write",
     "lint-prettier:check": "npm run lint:check && npm run prettier:check",
-    "lint-prettier:fix": "npm run lint:fix && npm run prettier:fix",
-    "prepare": "husky install"
+    "lint-prettier:fix": "npm run lint:fix && npm run prettier:fix"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
@@ -65,7 +64,6 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "postcss": "^8.4.33",
     "prettier": "^3.1.1",
