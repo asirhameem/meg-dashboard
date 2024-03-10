@@ -34,6 +34,7 @@ export const authApi = apiSlice.injectEndpoints({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const result = await queryFulfilled;
+
           if (result.data.success) {
             localStorage.removeItem("auth");
             dispatch(clearAuth());
