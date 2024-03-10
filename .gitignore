@@ -1,6 +1,7 @@
 # modules
 node_modules
 dist
+.idea
 
 # environment file
 .env
