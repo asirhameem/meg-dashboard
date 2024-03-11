@@ -1,5 +1,5 @@
-import { formData } from './../../../helper/formData';
-import { apiSlice } from './../api/apiSlice';
+import { formData } from '../../../helper/formData';
+import { apiSlice } from '../api/apiSlice';
 
 const BASE_PATH = '/products';
 
@@ -21,6 +21,7 @@ export const productsApi = apiSlice.injectEndpoints({
           formData: true
         }
       },
+      invalidatesTags: ['products']
     }),
     createProductSpecification: builder.mutation({
       query: ({ data }) => ({
