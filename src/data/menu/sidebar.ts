@@ -12,4 +12,5 @@ export const sidebarMenu = [
   { name: 'Specification add', href: '/specifications/add', icon: FolderIcon, current: false },
   { name: 'Spec Category', href: '/specifications/categories', icon: FolderIcon, current: false },
   { name: 'Spec Category add', href: '/specifications/categories/add', icon: FolderIcon, current: false },
+  { name: 'Paint', href: '/paints', icon: FolderIcon, current: false },
 ]
