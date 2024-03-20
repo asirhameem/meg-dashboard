@@ -14,28 +14,38 @@ import Categories from "../pages/specifications/Categories";
 import CategoryAdd from "../pages/specifications/CategoryAdd";
 import Specification from "../pages/Specification";
 import SpecificationAdd from "../pages/specifications/SpecificationAdd";
+import Paints from "../pages/Paints";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
-      <Route element={<PublicRouteWrapper />}>
-        <Route path="login" element={<Login />} />
+      <Route element={<PublicRouteWrapper/>}>
+        <Route path="login" element={<Login/>}/>
       </Route>
-      <Route element={<PrivateRouteWrapper />}>
-        <Route element={<Layout />}>
-          <Route path="" element={<Dashboard />} />
+      <Route element={<PrivateRouteWrapper/>}>
+        <Route element={<Layout/>}>
+          <Route path="" element={<Dashboard/>}/>
+
           <Route path="products">
-            <Route path="" element={<Products />} />
-            <Route path="add" element={<ProductAdd />} />
+            <Route path="" element={<Products/>}/>
+            <Route path="add" element={<ProductAdd/>}/>
           </Route>
+
           <Route path="specifications">
-            <Route path="" element={<Specification />} />
-            <Route path="add" element={<SpecificationAdd />} />
+            <Route path="" element={<Specification/>}/>
+            <Route path="add" element={<SpecificationAdd/>}/>
             <Route path="categories">
-              <Route path="" element={<Categories />} />
-              <Route path="add" element={<CategoryAdd />} />
+              <Route path="" element={<Categories/>}/>
+              <Route path="add" element={<CategoryAdd/>}/>
             </Route>
           </Route>
+
+          <Route path="paints">
+            <Route path="" element={<Paints/>}/>
+            {/*<Route path="add" element={<PaintsAdd/>}/>*/}
+          </Route>
+
+
         </Route>
       </Route>
     </Route>,

@@ -1,11 +1,11 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { toast } from "react-toastify";
-import { clearAuth } from "../auth/authSlice";
+import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
+import {toast} from "react-toastify";
+import {clearAuth} from "../auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_API_BASE_URL,
   credentials: "same-origin",
-  prepareHeaders: async (headers, { getState }) => {
+  prepareHeaders: async (headers, {getState}) => {
     const token = getState()?.auth?.token;
     // headers.set("Content-Type", "multipart/form-data");
     headers.set("Accept", "application/json");
@@ -32,6 +32,14 @@ export const apiSlice = createApi({
     }
     return result;
   },
-  tagTypes: ['products', 'specificationCategories', 'specifications'],
+  tagTypes: [
+    'products',
+    'specificationCategories',
+    'specifications',
+    'paints',
+    'categories',
+    'interiorTypes',
+    'features',
+  ],
   endpoints: () => ({}),
 });
