@@ -1,7 +1,7 @@
 import { Table } from "../components/molecules";
-import { productColumn } from "../data/tableColumn";
 
 import {useGetFeaturesQuery} from "../store/features/features/featuresApi";
+import {featuresColumn} from "../data/tableColumn/features/features.column";
 
 const Features = () => {
 
@@ -15,7 +15,7 @@ const Features = () => {
   return (
     <>
       <Table
-        column={productColumn}
+        column={featuresColumn}
         data={data?.data || []}
         isLoading={isLoading}
         action={action}
