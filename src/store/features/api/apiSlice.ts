@@ -33,6 +33,7 @@ export const apiSlice = createApi({
     return result;
   },
   tagTypes: [
+    'quotations',
     'products',
     'specificationCategories',
     'specifications',
