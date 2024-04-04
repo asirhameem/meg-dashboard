@@ -7,9 +7,9 @@ const Categories = () => {
   const {data, isLoading} = useGetCategoriesQuery({});
 
   const action = {
-    onClick: ({data, type}) => {
+    /*onClick: ({data, type}) => {
       console.log({data, type});
-    }
+    }*/
   }
   return (
     <>
