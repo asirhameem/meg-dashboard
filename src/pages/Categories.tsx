@@ -1,6 +1,7 @@
 import {Table} from "../components/molecules";
 import {categoryColumn} from "../data/tableColumn/categories/categories.column";
 import {useGetCategoriesQuery} from "../store/features/categories/categoriesApi";
+import {Button} from "../components/atoms";
 
 const Categories = () => {
 
@@ -13,6 +14,12 @@ const Categories = () => {
   }
   return (
     <>
+      <div className="flex justify-end">
+        <Button>
+          Add Category
+        </Button>
+
+      </div>
       <Table
         column={categoryColumn}
         data={data?.data || []}
