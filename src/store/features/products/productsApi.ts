@@ -18,7 +18,7 @@ export const productsApi = apiSlice.injectEndpoints({
           url: `${BASE_PATH}`,
           method: "POST",
           body: formData(data),
-          formData: true
+          formData: true,
         }
       },
       invalidatesTags: ['products']

@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { TProduct, productSchema } from "../../../validation";
 import { Button } from "../../atoms";
 import { CheckBox, TextInput } from "../../molecules";
+import { useEffect } from "react";
 
 type Props = {
   submit: (data: TProduct) => void;
@@ -12,11 +13,16 @@ type Props = {
 const Product = ({ submit, isLoading }: Props) => {
   const {
     register,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm<TProduct>({
     resolver: zodResolver(productSchema),
   });
+
+  useEffect(() => {
+    setValue("marketing_content_type", "image");
+  }, []);
 
   const onSubmit: SubmitHandler<TProduct> = data => submit(data);
 
@@ -99,15 +105,18 @@ const Product = ({ submit, isLoading }: Props) => {
           title="Thumbnail"
         /> */}
 
-        <input type="file" {...register("thumbnail_file")} />
+        <input type="text" hidden id="marketing_content_type" {...register("marketing_content_type")} />
+
+        <label htmlFor="thumbnail_file">Thumbnail</label>
+        <input type="file" id="thumbnail_file" {...register("thumbnail_file")} />
 
         {/* marketing_content_type input */}
-        <TextInput
+        {/* <TextInput
           errors={errors}
           register={register}
           name="marketing_content_type"
           title="Marketing Content Type"
-        />
+        /> */}
 
         {/* marketing_content_file input */}
         {/* <TextInput
@@ -117,7 +126,8 @@ const Product = ({ submit, isLoading }: Props) => {
           title="Marketing Content"
         /> */}
 
-        <input type="file" {...register("marketing_content_file")} />
+        <label htmlFor="marketing_content_file">Marketing content</label>
+        <input type="file" id="marketing_content_file" {...register("marketing_content_file")} />
 
         {/* is_marketed input */}
         <CheckBox
