@@ -1,3 +1,3 @@
-export const booleanToTinyInt = (value: boolean) => {
+export const booleanToTinyInt = (value: boolean): number => {
   return value ? 1 : 0;
 }
