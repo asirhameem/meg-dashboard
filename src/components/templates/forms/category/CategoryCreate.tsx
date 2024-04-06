@@ -1,28 +1,29 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { TSpecificationCategory, specificationCategorySchema } from "../../../../validation";
 import { Button } from "../../../atoms";
-import { TextInput } from "../../../molecules";
+import {CheckBox, TextInput} from "../../../molecules";
+import {categorySchema, TCategory} from "../../../../validation";
 
 type Props = {
-  submit: (data: TSpecificationCategory) => void;
+  submit: (data: TCategory) => void;
   isLoading: boolean;
 };
 
-const CategoryCreate = ({ submit, isLoading }: Props) => {
+const CategoryCreate = ({submit, isLoading}: Props) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<TSpecificationCategory>({
-    resolver: zodResolver(specificationCategorySchema),
+  } = useForm<TCategory>({
+    resolver: zodResolver(categorySchema),
   });
 
-  const onSubmit: SubmitHandler<TSpecificationCategory> = data => submit(data);
+  const onSubmit: SubmitHandler<TCategory> = data => submit(data);
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-3">
+      <form className="flex flex-col gap-y-3"
+            onSubmit={handleSubmit(onSubmit)}>
         {/* name input */}
         <TextInput
           errors={errors}
@@ -47,7 +48,23 @@ const CategoryCreate = ({ submit, isLoading }: Props) => {
           title="Description"
         />
 
-        <Button primary full type="submit" disabled={isLoading}>
+        {/* is_visible input */}
+        <CheckBox
+          errors={errors}
+          register={register}
+          name="is_visible"
+          title="Is Visible"
+        />
+
+        {/* is_active input */}
+        <CheckBox
+          errors={errors}
+          register={register}
+          name="is_active"
+          title="Is Active"
+        />
+
+        <Button primary full type="submit" disabled={isLoading} >
           Create
         </Button>
       </form>

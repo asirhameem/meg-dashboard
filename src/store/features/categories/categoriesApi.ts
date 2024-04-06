@@ -14,6 +14,7 @@ export const categoriesApi = apiSlice.injectEndpoints({
     }),
     createCategory: builder.mutation({
       query: ({ data }) => {
+        console.log(data, 'mutation');
         return {
           url: `${BASE_PATH}`,
           method: "POST",
