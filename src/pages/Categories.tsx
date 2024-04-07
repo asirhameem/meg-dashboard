@@ -18,10 +18,11 @@ const Categories = () => {
     }*/
   }
 
-  const handleCreate = (data: TCategory) => {
-    console.log('here');
-    console.log(data);
-    create({data});
+  const handleCreate = async (data: TCategory) => {
+    const response = await create({data});
+    if (response?.data?.success) {
+      setCreateModal(false);
+    }
   }
 
   return (
