@@ -10,11 +10,12 @@ import Layout from "../components/templates/layout/Layout";
 import Dashboard from "../pages/Dashboard";
 import Products from "../pages/Products";
 import ProductAdd from "../pages/products/ProductAdd";
-import Categories from "../pages/specifications/Categories";
-import CategoryAdd from "../pages/specifications/CategoryAdd";
+import SpecificationCategories from "../pages/specifications/Categories";
+import SpecificationCategoryAdd from "../pages/specifications/CategoryAdd";
 import Specification from "../pages/Specification";
 import SpecificationAdd from "../pages/specifications/SpecificationAdd";
 import Paints from "../pages/Paints";
+import Categories from "../pages/Categories";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +27,10 @@ export const router = createBrowserRouter(
         <Route element={<Layout/>}>
           <Route path="" element={<Dashboard/>}/>
 
+          <Route path="categories">
+            <Route path="" element={<Categories/>}/>
+          </Route>
+
           <Route path="products">
             <Route path="" element={<Products/>}/>
             <Route path="add" element={<ProductAdd/>}/>
@@ -35,8 +40,8 @@ export const router = createBrowserRouter(
             <Route path="" element={<Specification/>}/>
             <Route path="add" element={<SpecificationAdd/>}/>
             <Route path="categories">
-              <Route path="" element={<Categories/>}/>
-              <Route path="add" element={<CategoryAdd/>}/>
+              <Route path="" element={<SpecificationCategories/>}/>
+              <Route path="add" element={<SpecificationCategoryAdd/>}/>
             </Route>
           </Route>
 

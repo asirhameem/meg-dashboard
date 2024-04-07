@@ -154,7 +154,7 @@ const Product = ({ submit, isLoading }: Props) => {
         />
 
         <Button primary full type="submit" disabled={isLoading}>
-          Login
+          Create
         </Button>
       </form>
     </>

@@ -13,7 +13,7 @@ const Table = ({ column, data, isLoading, action }: Prop) => {
         <div className="py-8">
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
             <div
-              className="inline-block min-w-full border rounded-lg overflow-hidden"
+              className="inline-block min-w-full rounded-lg overflow-hidden"
             >
               {
                 isLoading ? (
