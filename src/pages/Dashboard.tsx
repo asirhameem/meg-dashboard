@@ -5,11 +5,11 @@ const Dashboard = () => {
   const [logout, { data, isLoading, error }] = useLazyLogoutQuery();
 
   useEffect(() => {
-    console.log({
+    /*console.log({
       data,
       error,
       isLoading,
-    });
+    });*/
   }, [data, error, isLoading]);
 
   const handleLogout = () => {

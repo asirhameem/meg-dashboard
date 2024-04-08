@@ -2,7 +2,7 @@ import {ModalBox, Table} from "../components/molecules";
 import {categoryColumn} from "../data/tableColumn/categories/categories.column";
 import {useCreateCategoryMutation, useGetCategoriesQuery} from "../store/features/categories/categoriesApi";
 import {Button} from "../components/atoms";
-import CategoryCreate from "../components/templates/forms/category/CategoryCreate";
+import CategoryCreate from "../components/templates/forms/category/create";
 import {useState} from "react";
 import {TCategory} from "../validation";
 
