@@ -11,13 +11,13 @@ const Paints = () => {
   const { data, isLoading } = useGetPaintsQuery({});
   const [createModal, setCreateModal] = useState(false);
   const action = {
-    onClick: ({ data, type }) => {
+    /*onClick: ({ data, type }) => {
       console.log({ data, type });
-    }
+    }*/
   }
 
-  const handleCreate = (data) => {
-    console.log(data);
+  const handleCreate = () => {
+
   }
   return (
     <>

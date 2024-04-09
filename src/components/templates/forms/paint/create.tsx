@@ -2,10 +2,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../../../atoms";
 import {CheckBox, TextInput} from "../../../molecules";
-import {categorySchema, TCategory} from "../../../../validation";
+import {paintSchema, TPaint} from "../../../../validation";
 
 type Props = {
-  submit: (data: TCategory) => void;
+  submit: (data: TPaint) => void;
   isLoading: boolean;
 };
 
@@ -14,11 +14,11 @@ const PaintCreate = ({submit, isLoading}: Props) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<TCategory>({
-    resolver: zodResolver(categorySchema),
+  } = useForm<TPaint>({
+    resolver: zodResolver(paintSchema),
   });
 
-  const onSubmit: SubmitHandler<TCategory> = data => submit(data);
+  const onSubmit: SubmitHandler<TPaint> = data => submit(data);
 
   return (
     <>
@@ -32,12 +32,20 @@ const PaintCreate = ({submit, isLoading}: Props) => {
           title="Name"
         />
 
-        {/* slug input */}
+        {/* hex input */}
         <TextInput
           errors={errors}
           register={register}
-          name="slug"
-          title="Slug"
+          name="hex"
+          title="Hex code"
+        />
+
+        {/* rgb input */}
+        <TextInput
+          errors={errors}
+          register={register}
+          name="rgb"
+          title="RGB code"
         />
 
         {/* description input */}
@@ -46,14 +54,6 @@ const PaintCreate = ({submit, isLoading}: Props) => {
           register={register}
           name="description"
           title="Description"
-        />
-
-        {/* is_visible input */}
-        <CheckBox
-          errors={errors}
-          register={register}
-          name="is_visible"
-          title="Is Visible"
         />
 
         {/* is_active input */}
