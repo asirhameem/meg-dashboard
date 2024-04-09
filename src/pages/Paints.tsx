@@ -4,6 +4,7 @@ import { paintColumn } from "../data/tableColumn";
 import {useGetPaintsQuery} from "../store/features/paints/paintsApi";
 import {Button} from "../components/atoms";
 import {useState} from "react";
+import PaintCreate from "../components/templates/forms/paint/create";
 
 const Paints = () => {
 
@@ -13,6 +14,10 @@ const Paints = () => {
     onClick: ({ data, type }) => {
       console.log({ data, type });
     }
+  }
+
+  const handleCreate = (data) => {
+    console.log(data);
   }
   return (
     <>

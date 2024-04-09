@@ -9,7 +9,7 @@ type Props = {
   isLoading: boolean;
 };
 
-const CategoryCreate = ({submit, isLoading}: Props) => {
+const PaintCreate = ({submit, isLoading}: Props) => {
   const {
     register,
     handleSubmit,
@@ -71,4 +71,4 @@ const CategoryCreate = ({submit, isLoading}: Props) => {
     </>
   )
 }
-export default CategoryCreate;
+export default PaintCreate;
