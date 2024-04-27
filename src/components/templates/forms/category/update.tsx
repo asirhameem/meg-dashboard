@@ -9,7 +9,7 @@ type Props = {
   isLoading: boolean;
 };
 
-const CategoryUpdate = ({ submit, isLoading }: Props) => {
+const Update = ({ submit, isLoading }: Props) => {
   const {
     register,
     handleSubmit,
@@ -54,4 +54,4 @@ const CategoryUpdate = ({ submit, isLoading }: Props) => {
     </>
   )
 }
-export default CategoryUpdate;
+export default Update;
