@@ -16,6 +16,7 @@ import Specification from "../pages/Specification";
 import SpecificationAdd from "../pages/specifications/SpecificationAdd";
 import Paints from "../pages/Paints";
 import Categories from "../pages/Categories";
+import ContactUs from "../pages/ContactUs";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -48,6 +49,10 @@ export const router = createBrowserRouter(
           <Route path="paints">
             <Route path="" element={<Paints/>}/>
             {/*<Route path="add" element={<PaintsAdd/>}/>*/}
+          </Route>
+
+          <Route path="contact-us">
+              <Route path="" element={<ContactUs />}/>
           </Route>
 
 

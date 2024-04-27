@@ -16,4 +16,5 @@ export const sidebarMenu = [
   { name: 'Categories', href: '/categories', icon: FolderIcon, current: false },
   { name: 'Interior types', href: '/interior-types', icon: FolderIcon, current: false },
   { name: 'Features', href: '/features', icon: FolderIcon, current: false },
+  { name: 'Contact Us', href: '/contact-us', icon: FolderIcon, current: false },
 ]

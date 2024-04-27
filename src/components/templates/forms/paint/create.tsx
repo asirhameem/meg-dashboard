@@ -1,6 +1,6 @@
-import { useForm, SubmitHandler } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "../../../atoms";
+import {useForm, SubmitHandler} from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {Button} from "../../../atoms";
 import {CheckBox, TextInput} from "../../../molecules";
 import {paintSchema, TPaint} from "../../../../validation";
 
@@ -13,18 +13,19 @@ const PaintCreate = ({submit, isLoading}: Props) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: {errors},
   } = useForm<TPaint>({
     resolver: zodResolver(paintSchema),
   });
 
-  const onSubmit: SubmitHandler<TPaint> = data => submit(data);
+  const onSubmit: SubmitHandler<TPaint> = data => {
+    console.log(data, isLoading);
+    submit(data);
+  };
 
   return (
     <>
-      <form className="flex flex-col gap-y-3"
-            onSubmit={handleSubmit(onSubmit)}>
-        {/* name input */}
+      <form className="flex flex-col gap-y-3" onSubmit={handleSubmit(onSubmit)}>
         <TextInput
           errors={errors}
           register={register}
@@ -32,7 +33,6 @@ const PaintCreate = ({submit, isLoading}: Props) => {
           title="Name"
         />
 
-        {/* hex input */}
         <TextInput
           errors={errors}
           register={register}
@@ -48,7 +48,6 @@ const PaintCreate = ({submit, isLoading}: Props) => {
           title="RGB code"
         />
 
-        {/* description input */}
         <TextInput
           errors={errors}
           register={register}
@@ -56,7 +55,6 @@ const PaintCreate = ({submit, isLoading}: Props) => {
           title="Description"
         />
 
-        {/* is_active input */}
         <CheckBox
           errors={errors}
           register={register}
@@ -64,7 +62,7 @@ const PaintCreate = ({submit, isLoading}: Props) => {
           title="Is Active"
         />
 
-        <Button primary full type="submit" disabled={isLoading} >
+        <Button primary={true} full={true} type="submit">
           Create
         </Button>
       </form>
