@@ -5,14 +5,11 @@ const ContactUs = () => {
 
   return (
     <>
-      <div className="flex justify-end">
-      </div>
       <Table
         column={contactUsColumn}
         data={[]}
         isLoading={false}
       />
-
     </>
   );
 };
