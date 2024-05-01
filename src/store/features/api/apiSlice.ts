@@ -40,6 +40,8 @@ export const apiSlice = createApi({
     'categories',
     'interiorTypes',
     'features',
+    'contactUs',
+    'testDrive',
   ],
   endpoints: () => ({}),
 });
