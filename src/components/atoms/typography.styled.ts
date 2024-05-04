@@ -9,7 +9,7 @@ type SmallProps = {
 };
 
 export const H1 = styled.h1`
-  font-size: 1.5;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--text-black);
   margin: 0;
@@ -17,6 +17,17 @@ export const H1 = styled.h1`
   @media (min-width: 768px) {
     font-size: 2rem;
   }
+`;
+
+export const H2 = styled.h2`
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-black);
+  margin: 0;
+  
+    @media (min-width: 768px) {
+      font-size: 1.5rem;
+    }
 `;
 
 export const Label = styled.label<LabelProps>`

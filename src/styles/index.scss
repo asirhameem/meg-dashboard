@@ -24,3 +24,9 @@
 body {
   font-family: "Open Sans", sans-serif;
 }
+
+// select disabled styles
+select:disabled {
+  background-color: var(--text-light-50);
+  opacity: 0.3;
+}

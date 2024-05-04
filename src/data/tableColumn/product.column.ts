@@ -29,9 +29,9 @@ export const productColumn = [
     type: "action",
     actions: [
       {
-        type: "specification",
-        title: "Specification",
-        color: "red"
+        type: "details",
+        title: "Details",
+        color: "gray"
       }
     ]
   }

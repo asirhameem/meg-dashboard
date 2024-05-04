@@ -12,19 +12,31 @@ type Props = {
   name: string;
   title: string;
   options: Option[];
+  isHidden?: boolean;
+  isLoading?: boolean;
+  defaultLabel?: string;
 };
 
-const SelectBox = ({ errors, register, name, title, options }: Props) => {
+const SelectBox = ({ errors, register, name, title, options, isHidden = false, isLoading = false, defaultLabel = "Please select one" }: Props) => {
   return (
     <>
-      <InputWrapper>
-        <Label htmlFor={name} error={!!errors[name]?.message}>
+      <InputWrapper hidden={isHidden}>
+        <Label htmlFor={name} error={!!errors[name]?.message} hidden={isHidden}>
           {title}:
         </Label>
-        <Select {...register(name)} error={!!errors[name]?.message}>
-          {options.map((option, index) => (
-            <option key={index} value={option.value}>{option.label}</option>
-          ))}
+        <Select {...register(name)} error={!!errors[name]?.message} hidden={isHidden} disabled={isLoading}>
+          {
+            isLoading ? (
+              <option value="">Loading...</option>
+            ) : (
+              <>
+                <option value="">{defaultLabel}</option>
+                {options.map((option, index) => (
+                  <option key={index} value={option.value}>{option.label}</option>
+                ))}
+              </>
+            )
+          }
         </Select>
         {errors?.[name]?.message && (
           <Small error>{errors[name]?.message}</Small>

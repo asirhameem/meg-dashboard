@@ -20,7 +20,7 @@ export const apiSlice = createApi({
   baseQuery: async (args, api, extraOptions) => {
     const result = await baseQuery(args, api, extraOptions);
 
-    if (result?.data?.status === 200 && result?.data?.success) {
+    if (result?.data?.status === 201 && result?.data?.success) {
       toast.success(result?.data?.message);
     }
 
@@ -40,6 +40,7 @@ export const apiSlice = createApi({
     'categories',
     'interiorTypes',
     'features',
+    'interiors',
   ],
   endpoints: () => ({}),
 });

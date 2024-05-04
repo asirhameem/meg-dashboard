@@ -11,6 +11,18 @@ export const interiorTypes = apiSlice.injectEndpoints({
         method: 'GET'
       }),
       providesTags: ['interiorTypes'],
+      transformResponse: (response: { data: Array<{ id: number, name: string }> }) => {
+        if (response?.data?.length) {
+          return response.data.map((type: { id: number, name: string }) => ({
+            value: type.id,
+            label: type.name,
+          }));
+        }
+        else {
+          return [];
+        }
+
+      }
     }),
     createInteriorType: builder.mutation({
       query: ({ data }) => {
