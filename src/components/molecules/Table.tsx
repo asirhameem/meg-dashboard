@@ -74,14 +74,11 @@ const Table = ({ column, data, isLoading, action }: Prop) => {
                                           <div>
                                             {
                                               col.actions.map((actionType: any, index: number) => {
-                                                const color = {
-                                                  bg: `bg-${actionType.color}-600`,
-                                                  hover: `bg-${actionType.color}-200`
-                                                }
+                                                const className = `bg-${actionType.color}-900 hover:bg-${actionType.color}-600 text-white font-bold py-1 px-2 rounded`
                                                 return (
                                                   <button
                                                     key={index}
-                                                    className={`${color.bg} hover:${color.hover} text-white font-bold py-1 px-2 rounded`}
+                                                    className={className}
                                                     onClick={() => action.onClick({ data: row, type: actionType.type })}
                                                   >
                                                     {actionType.title}

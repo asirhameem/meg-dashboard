@@ -1,3 +1,4 @@
+import React from "react";
 import { Input, Label, Small } from "../atoms";
 import { InputWrapper } from "../utils";
 
@@ -10,14 +11,14 @@ type Props = {
   isHidden?: boolean;
 };
 
-const TextInput = ({ errors, register, name, title, type = 'text', isHidden = false }: Props) => {
+const ImageInput = ({ errors, register, name, title, isHidden = false }: Props) => {
   return (
     <>
       <InputWrapper hidden={isHidden}>
         <Label htmlFor={name} error={!!errors[name]?.message} hidden={isHidden}>
           {title}:
         </Label>
-        <Input {...register(name)} type={type} error={!!errors[name]?.message} hidden={isHidden} />
+        <Input {...register(name)} type="file" error={!!errors[name]?.message} hidden={isHidden} />
         {errors?.[name]?.message && (
           <Small hidden={isHidden} error>{errors[name]?.message}</Small>
         )}
@@ -25,4 +26,4 @@ const TextInput = ({ errors, register, name, title, type = 'text', isHidden = fa
     </>
   )
 }
-export default TextInput;
+export default ImageInput;

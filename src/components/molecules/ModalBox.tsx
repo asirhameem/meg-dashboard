@@ -4,9 +4,10 @@ type Props = {
   title: string;
   onClose: () => void;
   children: React.ReactNode;
+  wrapperClassName?: string;
 };
 
-const ModalBox = ({ title, onClose, children }: Props) => {
+const ModalBox = ({ title, onClose, children, wrapperClassName }: Props) => {
   return (
     <>
       <div
@@ -16,7 +17,7 @@ const ModalBox = ({ title, onClose, children }: Props) => {
         role="dialog"
         className="flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-full max-h-full border-0 bg-gray-900 bg-opacity-50 backdrop-filter backdrop-blur-sm backdrop-saturate-150 transition-all duration-300 ease-in-out"
       >
-        <div className="relative p-4 w-full max-w-fit max-h-full">
+        <div className={`relative p-4 w-full max-w-fit max-h-full ${wrapperClassName}`}>
           <div className="relative bg-white rounded-lg shadow ">
             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
               <h3 className="text-xl font-semibold text-gray-900 ">

@@ -52,7 +52,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Layout() {
+export default function RootLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
