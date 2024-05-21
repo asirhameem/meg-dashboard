@@ -12,11 +12,22 @@ export const specificationCategoryColumn = [
   {
     title: "Status",
     key: "is_active",
-    type: "data"
+    type: "boolean",
+    values: {
+      true: "Active",
+      false: "Inactive"
+    }
   },
   {
     title: "Action",
     key: "action",
-    type: "action"
+    type: "action",
+    actions: [
+      {
+        type: "details",
+        title: "Details",
+        color: "gray"
+      }
+    ]
   }
 ]

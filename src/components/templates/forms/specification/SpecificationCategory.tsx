@@ -3,20 +3,33 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { TSpecificationCategory, specificationCategorySchema } from "../../../../validation";
 import { Button } from "../../../atoms";
 import { TextInput } from "../../../molecules";
+import { useEffect } from "react";
+import { specCategoryFormItems } from "../../../../types";
 
 type Props = {
   submit: (data: TSpecificationCategory) => void;
   isLoading: boolean;
+  data?: TSpecificationCategory | null;
 };
 
-const SpecificationCategory = ({ submit, isLoading }: Props) => {
+const SpecificationCategory = ({ submit, isLoading, data }: Props) => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<TSpecificationCategory>({
     resolver: zodResolver(specificationCategorySchema),
   });
+
+  useEffect(() => {
+    // set default value
+    if (data) {
+      Object.keys(data).forEach((key: string) => {
+        setValue(key as specCategoryFormItems, data[key as specCategoryFormItems]);
+      });
+    }
+  }, []);
 
   const onSubmit: SubmitHandler<TSpecificationCategory> = data => submit(data);
 
@@ -32,7 +45,7 @@ const SpecificationCategory = ({ submit, isLoading }: Props) => {
         />
 
         <Button primary full type="submit" disabled={isLoading}>
-          Create
+          {data?.id ? 'Update' : 'Create'}
         </Button>
       </form>
     </>

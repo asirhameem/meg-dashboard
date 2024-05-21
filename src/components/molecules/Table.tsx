@@ -65,7 +65,7 @@ const Table = ({ column, data, isLoading, action }: Prop) => {
                                       {
                                         col.type === "boolean" ? (
                                           <p className="text-gray-900 whitespace-no-wrap">
-                                            {col.values[row[col.key]]}
+                                            {col?.values?.[row?.[col?.key]]}
                                           </p>
                                         ) : ""
                                       }
@@ -73,7 +73,7 @@ const Table = ({ column, data, isLoading, action }: Prop) => {
                                         col.type === "action" ? (
                                           <div>
                                             {
-                                              col.actions.map((actionType: any, index: number) => {
+                                              col?.actions?.map((actionType: any, index: number) => {
                                                 const className = `bg-${actionType.color}-900 hover:bg-${actionType.color}-600 text-white font-bold py-1 px-2 rounded`
                                                 return (
                                                   <button
