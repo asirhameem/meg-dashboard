@@ -43,14 +43,9 @@ export const categoryColumn = [
     type: "action",
     actions: [
       {
-        type: "category",
-        title: "Add",
-        color: "primary"
-      },
-      {
-        type: "category",
-        title: "Delete",
-        color: "red"
+        type: "details",
+        title: "Details",
+        color: "gray"
       }
     ]
   }

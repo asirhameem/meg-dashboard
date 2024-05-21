@@ -1,0 +1,1 @@
+export type categoryFormItems = "name" | "slug" | "description" | "is_visible"
