@@ -24,6 +24,11 @@ export const apiSlice = createApi({
       toast.success(result?.data?.message);
     }
 
+    if (result?.data?.status === 200 && (result?.meta?.request?.method === "PUT" || result?.meta?.request?.method === "DELETE")) {
+      toast.success(result?.data?.message);
+    }
+
+
     if (result?.error?.status === 405) {
       toast.error("Method not allowed")
     }

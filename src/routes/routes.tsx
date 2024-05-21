@@ -15,7 +15,6 @@ import ProductDetails from "../pages/products/ProductDetails";
 import ProductInterior from "../pages/products/ProductInterior";
 import ProductSpecification from "../pages/products/ProductSpecification";
 import SpecificationCategories from "../pages/specifications/Categories";
-import SpecificationCategoryAdd from "../pages/specifications/CategoryAdd";
 import Specification from "../pages/Specification";
 import SpecificationAdd from "../pages/specifications/SpecificationAdd";
 import Paints from "../pages/Paints";
@@ -50,7 +49,6 @@ export const router = createBrowserRouter(
             <Route path="add" element={<SpecificationAdd />} />
             <Route path="categories">
               <Route path="" element={<SpecificationCategories />} />
-              <Route path="add" element={<SpecificationCategoryAdd />} />
             </Route>
           </Route>
 
