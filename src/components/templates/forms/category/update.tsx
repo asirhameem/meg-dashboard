@@ -1,24 +1,41 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { TSpecificationCategory, specificationCategorySchema } from "../../../../validation";
+import { TCategory, categorySchema } from "../../../../validation";
 import { Button } from "../../../atoms";
-import { TextInput } from "../../../molecules";
+import { CheckBox, TextInput } from "../../../molecules";
+import { useEffect } from "react";
+import { categoryFormItems } from "../../../../types";
 
 type Props = {
-  submit: (data: TSpecificationCategory) => void;
+  submit: (data: TCategory) => void;
   isLoading: boolean;
+  data: TCategory;
 };
 
-const Update = ({ submit, isLoading }: Props) => {
+const CategoryUpdate = ({ submit, isLoading, data }: Props) => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
-  } = useForm<TSpecificationCategory>({
-    resolver: zodResolver(specificationCategorySchema),
+  } = useForm<TCategory>({
+    resolver: zodResolver(categorySchema),
   });
 
-  const onSubmit: SubmitHandler<TSpecificationCategory> = data => submit(data);
+  const setDefaultValue = (value: categoryFormItems) => {
+    setValue(value, data[value]);
+  }
+
+  useEffect(() => {
+    // set default value
+    if (data) {
+      Object.keys(data).forEach((key: string) => {
+        setDefaultValue(key as categoryFormItems);
+      });
+    }
+  }, []);
+
+  const onSubmit: SubmitHandler<TCategory> = data => submit(data);
 
   return (
     <>
@@ -47,11 +64,19 @@ const Update = ({ submit, isLoading }: Props) => {
           title="Description"
         />
 
+        {/* is_visible input */}
+        <CheckBox
+          errors={errors}
+          register={register}
+          name="is_visible"
+          title="Is Visible"
+        />
+
         <Button primary full type="submit" disabled={isLoading}>
-          Create
+          Update
         </Button>
       </form>
     </>
   )
 }
-export default Update;
+export default CategoryUpdate;

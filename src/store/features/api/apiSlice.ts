@@ -24,6 +24,11 @@ export const apiSlice = createApi({
       toast.success(result?.data?.message);
     }
 
+
+    if (result?.error?.status === 500) {
+      toast.error(result?.error?.data?.message || result?.error?.data?.error);
+    }
+
     if (result?.error?.status === 401) {
       toast.error(result?.error?.data?.message);
       localStorage.removeItem("auth");
