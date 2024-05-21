@@ -27,10 +27,20 @@ export const specificationCategoriesApi = apiSlice.injectEndpoints({
       }
     }),
     createSpecificationCategories: builder.mutation({
-      query: (body) => {
+      query: ({ data }) => {
         return {
           url: `${BASE_PATH}`,
           method: "POST",
+          body: data,
+        }
+      },
+      invalidatesTags: ['specificationCategories']
+    }),
+    updateSpecificationCategories: builder.mutation({
+      query: ({ id, body }) => {
+        return {
+          url: `${BASE_PATH}/${id}`,
+          method: "PUT",
           body,
         }
       },
@@ -42,5 +52,6 @@ export const specificationCategoriesApi = apiSlice.injectEndpoints({
 export const {
   useGetSpecificationCategoriesQuery,
   useGetAllSpecificationCategoriesQuery,
-  useCreateSpecificationCategoriesMutation
+  useCreateSpecificationCategoriesMutation,
+  useUpdateSpecificationCategoriesMutation
 } = specificationCategoriesApi;
