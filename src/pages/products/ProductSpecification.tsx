@@ -30,11 +30,6 @@ const ProductSpecification = () => {
     { skip: !productBasicData?.data?.id || isLoadingProductBasicData }
   )
 
-  useEffect(() => {
-    console.log(productSpecifications);
-
-  }, [productSpecifications, isLoadingProductSpecifications]);
-
   const [
     createApi,
     { isLoading, isSuccess }

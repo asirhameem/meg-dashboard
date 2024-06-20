@@ -56,9 +56,25 @@ const Table = ({ column, data, isLoading, action }: Prop) => {
                                         ) : ""
                                       }
                                       {
+                                        col.type === "image" ? (
+                                          <img
+                                            src={row[col.key]}
+                                            alt="product"
+                                            className="w-10 h-10 rounded-full"
+                                          />
+                                        ) : ""
+                                      }
+                                      {
                                         col.type === "data" ? (
                                           <p className="text-gray-900 whitespace-no-wrap">
                                             {row[col.key]}
+                                          </p>
+                                        ) : ""
+                                      }
+                                      {
+                                        col.type === "short-text" ? (
+                                          <p className="text-gray-900 whitespace-no-wrap">
+                                            {row[col.key].slice(0, 20)}...
                                           </p>
                                         ) : ""
                                       }
