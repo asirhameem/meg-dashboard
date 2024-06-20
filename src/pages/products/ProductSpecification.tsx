@@ -1,11 +1,39 @@
 import { useEffect, useState } from 'react';
 import { Button, H2 } from '../../components/atoms';
-import { useCreateProductSpecificationMutation } from '../../store/features/products/productsApi';
+import { useCreateProductSpecificationMutation, useGetProductBasicBySlugQuery } from '../../store/features/products/productsApi';
 import { TProductSpecification } from '../../validation/productSpecification.ts';
 import ModalBox from '../../components/molecules/ModalBox.tsx';
 import Create from '../../components/templates/forms/productSpecification/Create';
+import { useParams } from 'react-router-dom';
+import { useGetAllProductSpecificationsByProductIdQuery } from '../../store/features/specifications/specificationApi.ts';
+import Table from '../../components/molecules/Table.tsx';
+import { productSpecificationColumn } from '../../data/tableColumn/productSpecification.column.ts';
 const ProductSpecification = () => {
+  const { slug } = useParams<{ slug: string }>();
+
   const [isShowModal, setIsShowModal] = useState(false);
+
+  const {
+    data: productBasicData,
+    isLoading: isLoadingProductBasicData,
+  } = useGetProductBasicBySlugQuery({
+    slug: slug
+  }, {
+    skip: !slug
+  });
+
+  const {
+    data: productSpecifications,
+    isLoading: isLoadingProductSpecifications
+  } = useGetAllProductSpecificationsByProductIdQuery(
+    { productId: productBasicData?.data?.id },
+    { skip: !productBasicData?.data?.id || isLoadingProductBasicData }
+  )
+
+  useEffect(() => {
+    console.log(productSpecifications);
+
+  }, [productSpecifications, isLoadingProductSpecifications]);
 
   const [
     createApi,
@@ -54,6 +82,14 @@ const ProductSpecification = () => {
           Add Product Specification
         </Button>
       </div>
+
+      <Table
+        column={productSpecificationColumn}
+        data={productSpecifications?.data || []}
+        isLoading={isLoadingProductSpecifications}
+      />
+
+
     </>
   )
 }

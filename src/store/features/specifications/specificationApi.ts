@@ -48,6 +48,13 @@ export const specificationApi = apiSlice.injectEndpoints({
       }),
       providesTags: ['specifications'],
     }),
+    getAllProductSpecificationsByProductId: builder.query({
+      query: ({ productId }: { productId: number }) => ({
+        url: `${BASE_PATH}/product/${productId}`,
+        method: 'GET'
+      }),
+      providesTags: ['specifications'],
+    }),
     createSpecification: builder.mutation({
       query: (body) => {
         return {
@@ -65,5 +72,6 @@ export const {
   useGetAllSpecificationsQuery,
   useGetAllSpecificationWithCategoriesQuery,
   useGetSpecificationsQuery,
+  useGetAllProductSpecificationsByProductIdQuery,
   useCreateSpecificationMutation
 } = specificationApi;
