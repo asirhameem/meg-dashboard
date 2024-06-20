@@ -1,3 +1,4 @@
+import { Children } from 'react';
 import { apiSlice } from './../api/apiSlice';
 
 const BASE_PATH = '/specifications';
@@ -13,8 +14,29 @@ export const specificationApi = apiSlice.injectEndpoints({
       transformResponse: (response: any) => {
         return response.data.map((spec: any) => {
           return {
-            name: spec.name,
-            id: spec.id
+            label: spec.name,
+            value: spec.id
+          }
+        })
+      }
+    }),
+    getAllSpecificationWithCategories: builder.query({
+      query: () => ({
+        url: `${BASE_PATH}/with-categories`,
+        method: 'GET'
+      }),
+      providesTags: ['specifications'],
+      transformResponse: (response: any) => {
+        return response.data.map((spec: any) => {
+          return {
+            label: spec.name,
+            value: spec.id,
+            children: spec.specifications.map((child: any) => {
+              return {
+                label: child.name,
+                value: child.id
+              }
+            })
           }
         })
       }
@@ -41,6 +63,7 @@ export const specificationApi = apiSlice.injectEndpoints({
 
 export const {
   useGetAllSpecificationsQuery,
+  useGetAllSpecificationWithCategoriesQuery,
   useGetSpecificationsQuery,
   useCreateSpecificationMutation
 } = specificationApi;

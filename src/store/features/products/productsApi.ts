@@ -12,6 +12,12 @@ export const productsApi = apiSlice.injectEndpoints({
       }),
       providesTags: ['products'],
     }),
+    getProductBasicBySlug: builder.query({
+      query: ({ slug }) => ({
+        url: `${BASE_PATH}/${slug}/basic`,
+        method: 'GET'
+      }),
+    }),
     createProduct: builder.mutation({
       query: ({ data }) => {
         return {
@@ -35,6 +41,7 @@ export const productsApi = apiSlice.injectEndpoints({
 
 export const {
   useGetProductsQuery,
+  useGetProductBasicBySlugQuery,
   useCreateProductMutation,
   useCreateProductSpecificationMutation
 } = productsApi;

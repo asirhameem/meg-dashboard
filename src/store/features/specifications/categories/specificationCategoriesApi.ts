@@ -20,8 +20,8 @@ export const specificationCategoriesApi = apiSlice.injectEndpoints({
       transformResponse: (response: any) => {
         return response.data.map((category: any) => {
           return {
-            name: category.name,
-            id: category.id
+            label: category.name,
+            value: category.id
           }
         })
       }
