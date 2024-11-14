@@ -1,0 +1,25 @@
+import { TApiEndPoint } from "../interfaces";
+
+export const API_END_POINTS: TApiEndPoint = {
+  AUTH_LOGIN: '/auth/login',
+  PRODUCTS: '/products',
+  PRODUCTS_CREATE: '/products',
+  PRODUCTS_INTERIOR_CREATE: '/products/interiors',
+  PRODUCTS_SPECIFICATION_CREATE: '/products/specifications',
+  INTERIOR_TYPE: '/interior-types',
+  PRODUCT_SPECIFICATION_WITH_CATEGORY: 'specifications/with-categories',
+  PRODUCTS_CATEGORIES: '/categories',
+  PRODUCTS_INTERIORS: '/interiors/products/:product-id',
+  PRODUCTS_SPECIFICATION: '/specifications/product/:product-id',
+  SPECIFICATIONS: '/specifications',
+  SPECIFICATIONS_CATEGORIES: '/specifications/categories',
+  CONFIGURATION_PAINTS: '/paints',
+  CONFIGURATION_WHEELS: '/wheels',
+  CONFIGURATION_INTERIOR_COLOR: '/interior-colors',
+  CONFIGURATION_PLATFORM_ALL: '/configurations',
+  CONFIGURATION_PLATFORM_BY_SECTION: '/platform-configuration?section=:section',
+  ORDERS_LIST: '/admin/orders',
+  ORDERS_DETAILS: '/admin/orders/:order-uuid',
+  CONFIGURATION_PLATFORM_INFO: 'configurations',
+  QUOTATION_LIST: '/quotations',
+}

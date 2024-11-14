@@ -1,0 +1,1 @@
+export type TDateTimeFormat = 'DD/MM/YYYY' | 'DD/MM/YYYY HH:mm' | 'DD/MM/YYYY HH:mm:ss' | 'DD/MM/YYYY HH:mm:ss.SSS' | 'DD/MM/YYYY HH:mm:ss.SSS A' | 'DD/MM/YYYY HH:mm:ss A' | 'DD/MM/YYYY HH:mm' | 'dddd, MMMM D, YYYY';
