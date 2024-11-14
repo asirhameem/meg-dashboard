@@ -2,6 +2,7 @@ import {
   FolderIcon,
   HomeIcon,
   UsersIcon,
+  Cog6ToothIcon,
 } from '@heroicons/react/24/outline'
 
 export const sidebarMenu = [
@@ -15,4 +16,5 @@ export const sidebarMenu = [
   { name: 'Categories', href: '/categories', icon: FolderIcon, current: false },
   { name: 'Interior types', href: '/interior-types', icon: FolderIcon, current: false },
   { name: 'Features', href: '/features', icon: FolderIcon, current: false },
+  { name: 'Configuration', href: '/configuration', icon: Cog6ToothIcon, current: false },
 ]

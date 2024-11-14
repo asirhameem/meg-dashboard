@@ -19,6 +19,7 @@ import Specification from "../pages/Specification";
 import SpecificationAdd from "../pages/specifications/SpecificationAdd";
 import Paints from "../pages/Paints";
 import Categories from "../pages/Categories";
+import Configuration from "../pages/Configuration";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -57,7 +58,10 @@ export const router = createBrowserRouter(
             {/*<Route path="add" element={<PaintsAdd/>}/>*/}
           </Route>
 
-
+          <Route path="configuration">
+            <Route path="" element={<Configuration />} />
+            {/*<Route path="add" element={<PaintsAdd/>}/>*/}
+          </Route>
         </Route>
       </Route>
     </Route>,

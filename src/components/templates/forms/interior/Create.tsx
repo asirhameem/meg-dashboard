@@ -5,6 +5,9 @@ import { ImageInput, SelectBox, TextInput } from "../../../molecules";
 import { Button } from "../../../atoms";
 import InfoInput from "../../../molecules/TextArea";
 import { useGetInteriorTypesQuery } from "../../../../store/features/interior/types/interiorTypesApi.ts";
+import { useParams } from "react-router-dom";
+import { useGetProductBasicBySlugQuery } from "../../../../store/features/products/productsApi.ts";
+import { useEffect } from "react";
 
 type Props = {
   submit: (data: TInterior) => void;
@@ -13,21 +16,36 @@ type Props = {
 
 const Create = ({ submit, isLoading }: Props) => {
 
+  const { slug } = useParams<{ slug: string }>();
+
   const {
     register,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm<TInterior>({
     resolver: zodResolver(interiorSchema),
-    defaultValues: {
-      product_id: "1",
-    }
+  });
+
+  const {
+    data: productBasicData,
+    isLoading: isLoadingProductBasicData,
+  } = useGetProductBasicBySlugQuery({
+    slug: slug
+  }, {
+    skip: !slug
   });
 
   const {
     data: interiorTypes,
     isLoading: isLoadingInteriorTypes,
   } = useGetInteriorTypesQuery({});
+
+  useEffect(() => {
+    if (productBasicData?.data?.id) {
+      setValue('product_id', productBasicData.data.id.toString());
+    }
+  }, [productBasicData, isLoadingProductBasicData]);
 
 
   const onSubmit: SubmitHandler<TInterior> = data => submit(data);

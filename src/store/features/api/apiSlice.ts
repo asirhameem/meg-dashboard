@@ -55,6 +55,7 @@ export const apiSlice = createApi({
     'features',
     'interiors',
     'product-interiors',
+    'configurations',
   ],
   endpoints: () => ({}),
 });
