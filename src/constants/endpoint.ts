@@ -4,6 +4,7 @@ export const API_END_POINTS: TApiEndPoint = {
   AUTH_LOGIN: '/auth/login',
   PRODUCTS: '/products',
   PRODUCTS_CREATE: '/products',
+  PRODUCTS_UPDATE: '/products',
   PRODUCTS_INTERIOR_CREATE: '/products/interiors',
   PRODUCTS_SPECIFICATION_CREATE: '/products/specifications',
   INTERIOR_TYPE: '/interior-types',

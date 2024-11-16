@@ -1,14 +1,15 @@
 import { useMutation, useQuery } from "react-query"
-import { GetData, PostData } from "../services"
+import { GetData, PostData, PutData } from "../services"
 import { API_END_POINTS, DEFAULT_TABLE_STATE, PRODUCT_TABLE_HEADER, PRODUCT_CATEGORY_TABLE_HEADER, PRODUCT_INTERIOR_TABLE_HEADER, PRODUCT_SPECIFICATION_TABLE_HEADER, PRODUCT_FORM_INITIAL_STATE, PRODUCT_INTERIOR_FORM_INITIAL_STATE } from "../constants"
 import { IDataTable, IFormSelectOption, IInteriorType, IProductForm, IProductInteriorForm, IProductsCategories, IProductsInteriors, IProductSpecificationForm, IProductSpecificationsFrom, IProductSpecificationWithCategory, IProductsSpecifications, ISpecification, TProducts } from "../interfaces"
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { apiError, apiSuccess, replaceUrlParams } from "../helpers"
 import { useForm, yupResolver } from "@mantine/form"
-import { productInteriorSchema, productSchema, productSpecificationSchema } from "../validations"
+import { productInteriorSchema, productSchema, productSpecificationSchema, productUpdateSchema } from "../validations"
 import { AxiosError } from "axios"
 import { PRODUCT_SPECIFICATION_FORM_INITIAL_STATE } from "../constants/defaultState"
+import { IProductUpdateForm } from "../interfaces/products"
 
 export const useGetProducts = () => {
   const navigate = useNavigate()
@@ -19,7 +20,11 @@ export const useGetProducts = () => {
     view: (row: unknown) => {
       const { id } = row as TProducts
       navigate(`/products/${id}/details`)
-    }
+    },
+    edit: (row: unknown) => {
+      const { id } = row as TProducts
+      navigate(`/products/${id}/update`, { state: { row } })
+    },
   }
 
   useEffect(() => {
@@ -30,7 +35,16 @@ export const useGetProducts = () => {
           id: product.id,
           model: product.model,
           title: product.title,
-          is_active: product.is_active ? "Active" : "Inactive",
+          is_visible: product.is_active ? "Active" : "Inactive",
+          uuid: product.uuid,
+          description: product.description,
+          production_cost: product.production_cost,
+          selling_cost: product.selling_cost,
+          booking_cost: product.booking_cost,
+          sorting_order: product.sorting_order,
+          is_marketed: product.is_marketed,
+          is_active: product.is_active,
+          category_id: product.category_id,
           action: "action"
         }
       })
@@ -308,5 +322,73 @@ export const useCreateProductSpecification = () => {
     specificationCategories: specificationCategories,
     currentSpecificationCategory: currentSpecificationCategory,
     isCreateSuccess: isCreateSuccess,
+  }
+}
+
+export const useUpdateProduct = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log(location?.state?.row);
+
+
+  const payload: IProductUpdateForm = {
+    id: location?.state?.row?.id,
+    uuid: location?.state?.row?.uuid,
+    model: location?.state?.row?.model,
+    title: location?.state?.row?.title,
+    description: location?.state?.row?.description,
+    production_cost: Number(location?.state?.row?.production_cost || 0),
+    selling_cost: Number(location?.state?.row?.selling_cost || 0),
+    booking_cost: location?.state?.row?.booking_cost,
+    sorting_order: location?.state?.row?.sorting_order,
+    is_marketed: location?.state?.row?.is_marketed,
+    is_active: location?.state?.row?.is_active,
+    category_id: location?.state?.row?.category_id,
+  }
+  const form = useForm<IProductForm>({
+    mode: "uncontrolled",
+    initialValues: payload,
+    validate: yupResolver(productUpdateSchema),
+  });
+
+  const {
+    mutate: updateProduct,
+    isLoading: isUpdating,
+    isError: hasUpdateError,
+    data: updateData,
+    isSuccess: isUpdateSuccess,
+    error: updateError
+  } = useMutation((formData: FormData) => PutData<FormData>(`${API_END_POINTS.PRODUCTS_UPDATE}/${location.state?.row?.uuid}`, formData))
+
+  const handleSubmit = async (values: IProductForm) => {
+    const payload: IProductForm = {
+      ...values,
+      category_id: Number(values.category_id),
+      is_active: values.is_active ? 1 : 0,
+      is_marketed: values.is_marketed ? 1 : 0,
+    }
+
+    const formData = new FormData();
+    Object.entries(payload).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
+    updateProduct(formData);
+  };
+
+  useEffect(() => {
+    if (hasUpdateError) {
+      apiError(updateError as AxiosError);
+    }
+    if (isUpdateSuccess) {
+      apiSuccess(updateData);
+      navigate('/products');
+    }
+  }, [isUpdating, hasUpdateError, isUpdateSuccess, updateError])
+
+  return {
+    form,
+    handleSubmit,
   }
 }

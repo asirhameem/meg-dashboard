@@ -14,6 +14,16 @@ export const productSchema = yup.object().shape({
   video_content_file: yup.mixed().required('video content file required'),
 });
 
+export const productUpdateSchema = yup.object().shape({
+  model: yup.string().required('model required'),
+  title: yup.string().required('title required'),
+  description: yup.string().required('description required'),
+  production_cost: yup.number().required('production cost required'),
+  selling_cost: yup.number().required('selling cost required'),
+  booking_cost: yup.number().required('booking cost required'),
+  category_id: yup.number().required('category required'),
+});
+
 export const productInteriorSchema = yup.object().shape({
   product_id: yup.number().optional(),
   interior_type_id: yup.number().required('interior type required'),

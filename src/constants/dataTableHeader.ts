@@ -31,7 +31,7 @@ export const PRODUCT_TABLE_HEADER: IDataTableHeader[] = [
   },
   {
     title: "Status",
-    key: "is_active",
+    key: "is_visible",
     type: "text",
     // values: {
     //   true: "Active",
@@ -46,9 +46,16 @@ export const PRODUCT_TABLE_HEADER: IDataTableHeader[] = [
       {
         type: "view",
         display: 'icon',
-        icon: 'eye',
+        icon: 'view',
         text: "view",
-      }
+      },
+      {
+        type: "edit",
+        display: 'icon',
+        icon: 'edit',
+        text: "edit",
+      },
+
     ]
   }
 ]
@@ -437,7 +444,7 @@ export const ORDER_TABLE_HEADER: IDataTableHeader[] = [
       {
         type: "view",
         display: 'icon',
-        icon: 'eye',
+        icon: 'view',
         text: "view",
       }
     ]

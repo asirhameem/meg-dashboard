@@ -39,6 +39,14 @@ a[data-active="false"] {
   font-weight: 400;
 }
 
+.table-action-btn-wrapper {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+}
+
 .button-icon {
   width: 28px;
   height: 28px;
@@ -48,11 +56,25 @@ a[data-active="false"] {
   padding: 0;
   cursor: pointer;
   border-radius: 6px;
+
 }
 
-.button-icon[data-icon="eye"] {
+.button-icon[data-icon="view"] {
   background-color: #cee5f2;
   border: 1px solid #0077b6;
+}
+
+.button-icon[data-icon="view"] svg {
+  stroke: #0077b6;
+}
+
+.button-icon[data-icon="edit"] {
+  background-color: #f2edce;
+  border: 1px solid #b67900;
+}
+
+.button-icon[data-icon="edit"] svg {
+  fill: #b67900;
 }
 
 .white-space-no-wrap {

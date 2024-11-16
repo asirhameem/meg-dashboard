@@ -2,6 +2,7 @@ export type TApiEndPoint = {
   AUTH_LOGIN: string
   PRODUCTS: string
   PRODUCTS_CREATE: string
+  PRODUCTS_UPDATE: string
   PRODUCTS_INTERIOR_CREATE: string
   PRODUCTS_CATEGORIES: string
   PRODUCTS_INTERIORS: string

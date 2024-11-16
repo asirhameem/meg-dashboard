@@ -11,7 +11,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { Button } from "./Button";
 import { useAuthClear } from "../hooks";
-import { MantineLogo } from "@mantinex/mantine-logo";
+import { Logo } from "../assets";
 
 export const DashboardLayout = () => {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
@@ -43,7 +43,10 @@ export const DashboardLayout = () => {
               visibleFrom="sm"
               size="sm"
             />
-            <MantineLogo size={30} />
+            <Logo height={30} width={50} />
+            {/* <Flex justify="center" align="center" gap="xs">
+              <Text fw="bold">MA Enterprise</Text>
+            </Flex> */}
           </Group>
           <Group h="100%" px="md">
             <Avatar color="cyan" radius="xl">

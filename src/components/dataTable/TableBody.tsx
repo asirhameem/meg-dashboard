@@ -4,7 +4,7 @@ import {
   IDataTableHeader,
   IDataTableRows,
 } from "../../interfaces";
-import { EyeIcon } from "../../assets";
+import { EditIcon, EyeIcon } from "../../assets";
 
 interface ITableBodyProps {
   rows: IDataTableRows[];
@@ -14,8 +14,10 @@ interface ITableBodyProps {
 
 const TableBody = ({ rows, columns, actions }: ITableBodyProps) => {
   const handleAction = (action: string, row: unknown) => {
-    if (action === "view") {
-      actions?.view(row);
+    if (action === "view" && actions?.view) {
+      actions.view(row);
+    } else if (action === "edit" && actions?.edit) {
+      actions.edit(row);
     }
   };
   return (
@@ -28,23 +30,28 @@ const TableBody = ({ rows, columns, actions }: ITableBodyProps) => {
                 if (column.type === "action") {
                   return (
                     <Table.Td key={column.key}>
-                      {column.actions?.map((action, index) => {
-                        return (
-                          <button
-                            key={index}
-                            className="button-icon"
-                            data-icon={action.icon}
-                            onClick={() => handleAction(action.type, row)}
-                          >
-                            {action.display === "icon" && (
-                              <>{action.icon === "eye" && <EyeIcon />}</>
-                            )}
-                            {action.display === "text" && (
-                              <span>{action.text}</span>
-                            )}
-                          </button>
-                        );
-                      })}
+                      <div className="table-action-btn-wrapper">
+                        {column.actions?.map((action, index) => {
+                          return (
+                            <button
+                              key={index}
+                              className="button-icon"
+                              data-icon={action.icon}
+                              onClick={() => handleAction(action.type, row)}
+                            >
+                              {action.display === "icon" && (
+                                <>{action.icon === "view" && <EyeIcon />}</>
+                              )}
+                              {action.display === "icon" && (
+                                <>{action.icon === "edit" && <EditIcon />}</>
+                              )}
+                              {action.display === "text" && (
+                                <span>{action.text}</span>
+                              )}
+                            </button>
+                          );
+                        })}
+                      </div>
                     </Table.Td>
                   );
                 } else if (column.type === "jsx") {

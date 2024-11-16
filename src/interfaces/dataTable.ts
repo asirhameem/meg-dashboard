@@ -9,9 +9,9 @@ export interface IDataTableHeader {
   type: 'index' | 'text' | 'action' | 'image' | 'jsx';
   width?: string;
   actions?: {
-    type: 'view',
+    type: 'view' | 'edit' | 'delete',
     display: 'icon' | 'text',
-    icon: 'eye',
+    icon: 'view' | 'edit' | 'delete',
     text: string,
   }[]
 }
@@ -21,5 +21,6 @@ export interface IDataTableRows {
 }
 
 export interface IDataTableAction {
-  view: (id: unknown) => void
+  view?: (id: unknown) => void
+  edit?: (id: unknown) => void
 }

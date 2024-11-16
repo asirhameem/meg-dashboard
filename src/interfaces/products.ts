@@ -51,7 +51,7 @@ export interface IProductsSpecifications {
 export interface IProductForm {
   model: string;
   title: string;
-  slug: string;
+  slug?: string;
   description: string;
   production_cost?: number;
   selling_cost?: number;
@@ -60,10 +60,15 @@ export interface IProductForm {
   is_marketed: 0 | 1;
   is_active: 0 | 1;
   category_id?: number;
-  marketing_content_type: 'image' | 'video';
+  marketing_content_type?: 'image' | 'video';
   marketing_content_file?: File;
   thumbnail_file?: File;
   video_content_file?: File;
+}
+
+export interface IProductUpdateForm extends IProductForm {
+  uuid: string;
+  id: number;
 }
 
 export interface IProductResponse {

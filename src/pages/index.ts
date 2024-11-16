@@ -2,6 +2,7 @@ import SignInPage from './auth/sign-in'
 import ProductsPage from './products';
 import DashboardPage from './dashboard';
 import ProductCreatePage from './products/create';
+import ProductUpdatePage from './products/update';
 import SpecificationsPage from './specifications';
 import SpecificationsCategoriesPage from './specifications/categories';
 import ProductsCategoriesPage from './products/categories';
@@ -22,6 +23,7 @@ export {
   SignInPage,
   DashboardPage,
   ProductCreatePage,
+  ProductUpdatePage,
   SpecificationsPage,
   SpecificationsCategoriesPage,
   ProductsCategoriesPage,
