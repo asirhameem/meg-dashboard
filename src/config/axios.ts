@@ -5,7 +5,7 @@ import useAppStore from './store';
 
 export const AxiosInstance = axios.create({
   baseURL: ENVIRONMENT_VARIABLES.API_BASE_URL,
-  timeout: 1000,
+  timeout: 60000,
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',

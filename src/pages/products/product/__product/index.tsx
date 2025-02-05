@@ -1,11 +1,9 @@
-import { Breadcrumbs, Divider, Title } from "@mantine/core";
-import { Link, useParams } from "react-router-dom";
+import ProductUpdate from "../../../../features/products/update";
 
 const ProductDetailsPage = () => {
-  const params = useParams();
   return (
     <>
-      <Breadcrumbs pt="xl">
+      {/* <Breadcrumbs pt="xl">
         <Link to="/dashboard" className="link-blue">
           Home
         </Link>
@@ -21,8 +19,11 @@ const ProductDetailsPage = () => {
       </Breadcrumbs>
       <Title order={1} c="gray.7">
         Product Details
-      </Title>
-      <Divider mt="xs" mb="xl" />
+      </Title> */}
+      {/* <Divider mt="xs" mb="xl" /> */}
+      <div style={{ marginTop: "32px" }}>
+        <ProductUpdate />
+      </div>
     </>
   );
 };

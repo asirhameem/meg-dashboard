@@ -22,6 +22,15 @@ const ProductsInterior = () => {
     }
   }, [isCreateSuccess]);
 
+  const tableActions = {
+    edit: (row: unknown) => {
+      console.log(row);
+    },
+    delete: (row: unknown) => {
+      console.log(row);
+    },
+  };
+
   return (
     <>
       <Drawer
@@ -38,7 +47,7 @@ const ProductsInterior = () => {
         />
       </Drawer>
       <Header handleFormDrawerOpen={open} />
-      <DataTable columns={data.head} rows={data.body} />
+      <DataTable columns={data.head} rows={data.body} actions={tableActions} />
     </>
   );
 };

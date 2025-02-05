@@ -4,7 +4,7 @@ import {
   IDataTableHeader,
   IDataTableRows,
 } from "../../interfaces";
-import { EditIcon, EyeIcon } from "../../assets";
+import { DeleteIcon, EditIcon, EyeIcon } from "../../assets";
 
 interface ITableBodyProps {
   rows: IDataTableRows[];
@@ -18,6 +18,8 @@ const TableBody = ({ rows, columns, actions }: ITableBodyProps) => {
       actions.view(row);
     } else if (action === "edit" && actions?.edit) {
       actions.edit(row);
+    } else if (action === "delete" && actions?.delete) {
+      actions.delete(row);
     }
   };
   return (
@@ -44,6 +46,11 @@ const TableBody = ({ rows, columns, actions }: ITableBodyProps) => {
                               )}
                               {action.display === "icon" && (
                                 <>{action.icon === "edit" && <EditIcon />}</>
+                              )}
+                              {action.display === "icon" && (
+                                <>
+                                  {action.icon === "delete" && <DeleteIcon />}
+                                </>
                               )}
                               {action.display === "text" && (
                                 <span>{action.text}</span>

@@ -3,6 +3,7 @@ export type TApiEndPoint = {
   PRODUCTS: string
   PRODUCTS_CREATE: string
   PRODUCTS_UPDATE: string
+  PRODUCTS_DETAILS: string
   PRODUCTS_INTERIOR_CREATE: string
   PRODUCTS_CATEGORIES: string
   PRODUCTS_INTERIORS: string
@@ -21,4 +22,26 @@ export type TApiEndPoint = {
   INTERIOR_TYPE: string
   CONFIGURATION_PLATFORM_INFO: string
   QUOTATION_LIST: string
+  // paint
+  PAINT_CREATE: string
+  PAINT_DETAILS: string
+  PAINT_UPDATE: string
+  PAINT_DELETE: string
+  // wheel
+  WHEEL_CREATE: string
+  WHEEL_DETAILS: string
+  WHEEL_UPDATE: string
+  WHEEL_DELETE: string
+  // interior color
+  INTERIOR_COLOR_CREATE: string
+  INTERIOR_COLOR_DETAILS: string
+  INTERIOR_COLOR_UPDATE: string
+  INTERIOR_COLOR_DELETE: string
+  // specification category
+  SPECIFICATION_CATEGORY_CREATE: string
+  SPECIFICATION_CATEGORY_DETAILS: string
+  SPECIFICATION_CATEGORY_UPDATE: string
+  SPECIFICATION_CATEGORY_DELETE: string
+  // brochures
+  BROCHURE_LIST: string
 }

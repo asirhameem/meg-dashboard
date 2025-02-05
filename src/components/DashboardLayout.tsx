@@ -84,17 +84,6 @@ export const DashboardLayout = () => {
               <NavLink
                 label={
                   <Link
-                    to="/products/categories"
-                    className="link-clean"
-                    data-active={location.pathname === "/products/categories"}
-                  >
-                    Product Category List
-                  </Link>
-                }
-              />
-              <NavLink
-                label={
-                  <Link
                     to="/products"
                     className="link-clean"
                     data-active={location.pathname === "/products"}
@@ -159,6 +148,17 @@ export const DashboardLayout = () => {
               childrenOffset={28}
               active={location.pathname.includes("/configurations")}
             >
+              <NavLink
+                label={
+                  <Link
+                    to="/products/categories"
+                    className="link-clean"
+                    data-active={location.pathname === "/products/categories"}
+                  >
+                    Product Category List
+                  </Link>
+                }
+              />
               <NavLink
                 label={
                   <Link
@@ -243,6 +243,22 @@ export const DashboardLayout = () => {
               // leftSection={<IconGauge size="1rem" stroke={1.5} />}
               childrenOffset={28}
               active={location.pathname === "/quotations"}
+            />
+
+            {/* brochure */}
+            <NavLink
+              label={
+                <Link
+                  to="/brochures"
+                  className="link-clean"
+                  data-active={location.pathname === "/brochures"}
+                >
+                  Brochures
+                </Link>
+              }
+              // leftSection={<IconGauge size="1rem" stroke={1.5} />}
+              childrenOffset={28}
+              active={location.pathname === "/brochures"}
             />
           </>
         </AppShell.Section>

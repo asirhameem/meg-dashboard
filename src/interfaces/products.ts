@@ -23,6 +23,7 @@ export type TProducts = {
   marketed_specs: null;
   specifications: null;
   interiors: null;
+  product_brochure: string;
 }
 
 export interface IProductsCategories {
@@ -64,6 +65,7 @@ export interface IProductForm {
   marketing_content_file?: File;
   thumbnail_file?: File;
   video_content_file?: File;
+  product_brochure?: File;
 }
 
 export interface IProductUpdateForm extends IProductForm {

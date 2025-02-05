@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "react-query"
-import { GetData, PostData, PutData } from "../services"
+import { GetData, PostData } from "../services"
 import { API_END_POINTS, DEFAULT_TABLE_STATE, PRODUCT_TABLE_HEADER, PRODUCT_CATEGORY_TABLE_HEADER, PRODUCT_INTERIOR_TABLE_HEADER, PRODUCT_SPECIFICATION_TABLE_HEADER, PRODUCT_FORM_INITIAL_STATE, PRODUCT_INTERIOR_FORM_INITIAL_STATE } from "../constants"
 import { IDataTable, IFormSelectOption, IInteriorType, IProductForm, IProductInteriorForm, IProductsCategories, IProductsInteriors, IProductSpecificationForm, IProductSpecificationsFrom, IProductSpecificationWithCategory, IProductsSpecifications, ISpecification, TProducts } from "../interfaces"
 import { useEffect, useState } from "react"
@@ -19,7 +19,7 @@ export const useGetProducts = () => {
   const tableActions = {
     view: (row: unknown) => {
       const { id } = row as TProducts
-      navigate(`/products/${id}/details`)
+      navigate(`/products/${id}/details`, { state: { row } })
     },
     edit: (row: unknown) => {
       const { id } = row as TProducts
@@ -83,17 +83,20 @@ export const useGetProductsInteriors = () => {
   const params = useParams();
 
   const [dataTableState, setDataTableState] = useState<IDataTable>(DEFAULT_TABLE_STATE)
-  const { isLoading, error, data, refetch } = useQuery('products-interiors', () => GetData<IProductsInteriors[]>(replaceUrlParams(API_END_POINTS.PRODUCTS_INTERIORS, params)))
+  const { isLoading, error, data, refetch } = useQuery(['products-interiors', params['product-id']], () => GetData<IProductsInteriors[]>(replaceUrlParams(API_END_POINTS.PRODUCTS_INTERIORS, params)))
 
   useEffect(() => {
     if (!isLoading && !error && data?.data?.length) {
       const head = PRODUCT_INTERIOR_TABLE_HEADER;
       const body = data.data.map((item: IProductsInteriors) => {
+        console.log(item);
+
         return {
           id: item.id,
           interior_title: item.interior_title,
           interior_image: item.interior_image,
-          interior_description: item.interior_description,
+          // interior_description: item.interior_description,
+          interior_type: item.interior_type,
           action: "action"
         }
       })
@@ -108,7 +111,7 @@ export const useGetProductsSpecification = () => {
   const params = useParams();
 
   const [dataTableState, setDataTableState] = useState<IDataTable>(DEFAULT_TABLE_STATE)
-  const { isLoading, error, data, refetch } = useQuery('products-interiors', () => GetData<IProductsSpecifications[]>(replaceUrlParams(API_END_POINTS.PRODUCTS_SPECIFICATION, params)))
+  const { isLoading, error, data, refetch } = useQuery(['products-specification', params['product-id']], () => GetData<IProductsSpecifications[]>(replaceUrlParams(API_END_POINTS.PRODUCTS_SPECIFICATION, params)))
 
   useEffect(() => {
     if (!isLoading && !error && data?.data?.length) {
@@ -154,6 +157,7 @@ export const useCreateProduct = () => {
       is_marketed: values.is_marketed ? 1 : 0,
       marketing_content_type: values.marketing_content_file?.type.includes('image') ? 'image' : 'video',
       video_content_file: values.video_content_file ? values.video_content_file : undefined,
+      product_brochure: values.product_brochure ? values.product_brochure : undefined,
     }
 
     const formData = new FormData();
@@ -328,8 +332,26 @@ export const useCreateProductSpecification = () => {
 export const useUpdateProduct = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const params = useParams();
 
-  console.log(location?.state?.row);
+  const {
+    isLoading: isDetailsLoading,
+    error: detailsError,
+    data: detailsData,
+  } = useQuery(
+    "configuration-paint",
+    () =>
+      params['product-id']
+        ? GetData<TProducts>(
+          replaceUrlParams(API_END_POINTS.PRODUCTS_DETAILS, {
+            "product-id": location?.state?.row?.uuid,
+          })
+        )
+        : Promise.reject("No ID provided"),
+    {
+      enabled: !!params['product-id'],
+    }
+  );
 
 
   const payload: IProductUpdateForm = {
@@ -359,7 +381,7 @@ export const useUpdateProduct = () => {
     data: updateData,
     isSuccess: isUpdateSuccess,
     error: updateError
-  } = useMutation((formData: FormData) => PutData<FormData>(`${API_END_POINTS.PRODUCTS_UPDATE}/${location.state?.row?.uuid}`, formData))
+  } = useMutation((formData: FormData) => PostData<FormData>(`${API_END_POINTS.PRODUCTS_UPDATE}/${location?.state?.row?.uuid}`, formData))
 
   const handleSubmit = async (values: IProductForm) => {
     const payload: IProductForm = {
@@ -386,6 +408,28 @@ export const useUpdateProduct = () => {
       navigate('/products');
     }
   }, [isUpdating, hasUpdateError, isUpdateSuccess, updateError])
+
+  useEffect(() => {
+    if (detailsData?.success) {
+      if (detailsData?.data) {
+        const { booking_cost, category_id, description, is_active, is_marketed, model, production_cost, selling_cost, slug, sorting_order, title } = detailsData.data;
+
+        form.initialize({
+          booking_cost,
+          category_id,
+          description,
+          is_active: is_active ? 1 : 0,
+          is_marketed: is_marketed ? 1 : 0,
+          model,
+          production_cost,
+          selling_cost,
+          slug,
+          sorting_order,
+          title,
+        });
+      }
+    }
+  }, [isDetailsLoading, detailsError, detailsData]);
 
   return {
     form,

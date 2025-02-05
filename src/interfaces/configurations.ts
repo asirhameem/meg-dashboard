@@ -4,6 +4,7 @@ export interface IConfigurationPaints {
   hex: string;
   image: string;
   is_active: boolean;
+  rgb: string;
 }
 
 export interface IConfigurationWheels {

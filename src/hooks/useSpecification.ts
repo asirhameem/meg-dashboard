@@ -29,7 +29,7 @@ export const useGetSpecifications = () => {
 
 export const useGetSpecificationsCategories = () => {
   const [dataTableState, setDataTableState] = useState<IDataTable>(DEFAULT_TABLE_STATE)
-  const { isLoading, error, data } = useQuery('specifications-categories', () => GetData<ISpecificationsCategories[]>(API_END_POINTS.SPECIFICATIONS_CATEGORIES))
+  const { isLoading, error, data, refetch } = useQuery('specifications-categories', () => GetData<ISpecificationsCategories[]>(API_END_POINTS.SPECIFICATIONS_CATEGORIES))
 
   useEffect(() => {
     if (!isLoading && !error && data?.data?.length) {
@@ -46,6 +46,6 @@ export const useGetSpecificationsCategories = () => {
     }
   }, [isLoading, error, data])
 
-  return { isLoading, error, data: dataTableState }
+  return { isLoading, error, data: dataTableState, refetch }
 
 }

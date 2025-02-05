@@ -5,7 +5,8 @@ import { useGetProducts, useGetProductsCategories, useGetProductsInteriors, useG
 import { useGetPaints, useGetWheels, useGeInteriorColors, useGetPlatformInfo, useCreatePlatformInfo } from './useConfiguration'
 import { useGetOrders, useGetOrderDetails } from './useOrder'
 import { useQueryParams } from './useQueryParam'
-import { useQuotation } from './useQuotation'
+import { useQuotations, useQuotation } from './useQuotations'
+import { useBrochures } from './useBrochures'
 
 export {
   useAuthSignIn,
@@ -27,5 +28,7 @@ export {
   useGetPlatformInfo,
   useQueryParams,
   useCreatePlatformInfo,
+  useQuotations,
   useQuotation,
+  useBrochures
 }

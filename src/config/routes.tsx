@@ -24,9 +24,11 @@ import {
   SpecificationsCategoriesPage,
   SpecificationsPage,
   WheelsPage,
+  QuotationDetailsPage,
 } from "../pages";
 import PublicRouter from "../routes/PublicRouter";
 import PrivateRouter from "../routes/PrivateRouter";
+import BrochurePage from "../pages/brochure";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -45,6 +47,10 @@ export const router = createBrowserRouter(
           </Route>
           <Route path="quotations">
             <Route path="" element={<QuotationPage />} />
+            <Route path=":quotationId" element={<QuotationDetailsPage />} />
+          </Route>
+          <Route path="brochures">
+            <Route path="" element={<BrochurePage />} />
           </Route>
           <Route path="products">
             <Route path="" element={<ProductsPage />} />

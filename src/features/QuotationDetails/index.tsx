@@ -1,10 +1,9 @@
 import { Breadcrumbs, Divider, Title } from "@mantine/core";
 import { Link } from "react-router-dom";
-import { useQuotations } from "../../hooks";
-import { DataTable } from "../../components";
+import { useQuotation } from "../../hooks";
 
-const Quotation = () => {
-  const { data, actions } = useQuotations();
+const QuotationDetails = () => {
+  const {} = useQuotation();
   return (
     <>
       <Breadcrumbs>
@@ -19,8 +18,7 @@ const Quotation = () => {
         Quotations
       </Title>
       <Divider mb="xl" />
-      <DataTable columns={data.head} rows={data.body} actions={actions} />
     </>
   );
 };
-export default Quotation;
+export default QuotationDetails;

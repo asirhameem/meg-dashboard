@@ -17,6 +17,7 @@ import OrdersPage from './orders';
 import OrderDetailsPage from './orders/order';
 import PlatformInfoPage from './configurations/platform-info';
 import QuotationPage from './quotation';
+import QuotationDetailsPage from './quotationDetails';
 
 export {
   ProductsPage,
@@ -38,4 +39,5 @@ export {
   OrderDetailsPage,
   PlatformInfoPage,
   QuotationPage,
+  QuotationDetailsPage,
 }

@@ -104,6 +104,15 @@ const Form = () => {
               />
             </Flex>
             <Flex gap="sm">
+              <FileInput<IProductForm>
+                withAsterisk
+                label="Product Brochure"
+                placeholder="add product brochure"
+                name="product_brochure"
+                form={form}
+              />
+            </Flex>
+            <Flex gap="sm">
               <Checkbox<IProductForm>
                 label="Show as marketed"
                 name="is_marketed"

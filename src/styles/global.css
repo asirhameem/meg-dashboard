@@ -77,6 +77,15 @@ a[data-active="false"] {
   fill: #b67900;
 }
 
+.button-icon[data-icon="delete"] {
+  background-color: #f2cece;
+  border: 1px solid #b60000;
+}
+
+.button-icon[data-icon="delete"] svg {
+  fill: #b60000;
+}
+
 .white-space-no-wrap {
   white-space: nowrap;
 }

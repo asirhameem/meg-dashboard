@@ -23,4 +23,5 @@ export interface IDataTableRows {
 export interface IDataTableAction {
   view?: (id: unknown) => void
   edit?: (id: unknown) => void
+  delete?: (id: unknown) => void
 }

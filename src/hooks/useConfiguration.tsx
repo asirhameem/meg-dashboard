@@ -29,8 +29,9 @@ import { Chip } from "../components";
 export const useGetPaints = () => {
   const [dataTableState, setDataTableState] =
     useState<IDataTable>(DEFAULT_TABLE_STATE);
-  const { isLoading, error, data } = useQuery("configuration-paints", () =>
-    GetData<IConfigurationPaints[]>(API_END_POINTS.CONFIGURATION_PAINTS)
+  const { isLoading, error, data, refetch } = useQuery(
+    "configuration-paints",
+    () => GetData<IConfigurationPaints[]>(API_END_POINTS.CONFIGURATION_PAINTS)
   );
 
   useEffect(() => {
@@ -52,14 +53,15 @@ export const useGetPaints = () => {
     }
   }, [isLoading, error, data]);
 
-  return { isLoading, error, data: dataTableState };
+  return { isLoading, error, data: dataTableState, refetch };
 };
 
 export const useGetWheels = () => {
   const [dataTableState, setDataTableState] =
     useState<IDataTable>(DEFAULT_TABLE_STATE);
-  const { isLoading, error, data } = useQuery("configuration-wheels", () =>
-    GetData<IConfigurationWheels[]>(API_END_POINTS.CONFIGURATION_WHEELS)
+  const { isLoading, error, data, refetch } = useQuery(
+    "configuration-wheels",
+    () => GetData<IConfigurationWheels[]>(API_END_POINTS.CONFIGURATION_WHEELS)
   );
 
   useEffect(() => {
@@ -73,22 +75,25 @@ export const useGetWheels = () => {
           image: item.image,
           is_active: item.is_active ? "Active" : "Inactive",
           action: "action",
+          uuid: item.uuid,
         };
       });
       setDataTableState({ head, body });
     }
   }, [isLoading, error, data]);
 
-  return { isLoading, error, data: dataTableState };
+  return { isLoading, error, data: dataTableState, refetch };
 };
 
 export const useGeInteriorColors = () => {
   const [dataTableState, setDataTableState] =
     useState<IDataTable>(DEFAULT_TABLE_STATE);
-  const { isLoading, error, data } = useQuery("configuration-wheels", () =>
-    GetData<IConfigurationInteriorColor[]>(
-      API_END_POINTS.CONFIGURATION_INTERIOR_COLOR
-    )
+  const { isLoading, error, data, refetch } = useQuery(
+    "configuration-wheels",
+    () =>
+      GetData<IConfigurationInteriorColor[]>(
+        API_END_POINTS.CONFIGURATION_INTERIOR_COLOR
+      )
   );
 
   useEffect(() => {
@@ -108,7 +113,7 @@ export const useGeInteriorColors = () => {
     }
   }, [isLoading, error, data]);
 
-  return { isLoading, error, data: dataTableState };
+  return { isLoading, error, data: dataTableState, refetch };
 };
 
 export const useGetPlatformInfo = () => {

@@ -28,20 +28,15 @@ export const PostData = async <T>(url: TApiEndPoint[keyof TApiEndPoint], data: T
   return response;
 }
 
-export const PutData = async <T>(url: TApiEndPoint[keyof TApiEndPoint], data: T) => {
-  try {
-    const response = await AxiosInstance.put(url, data);
-    return response.data;
-  } catch (error) {
-    return error;
-  }
+export const PutData = async <T>(url: TApiEndPoint[keyof TApiEndPoint], data: T): Promise<AxiosResponse> => {
+  const isFormData = data instanceof FormData;
+  const response = await AxiosInstance.put(url, data, {
+    headers: isFormData ? { 'Content-Type': 'multipart/form-data' } : {},
+  });
+  return response.data;
 }
 
 export const DeleteData = async (url: TApiEndPoint[keyof TApiEndPoint]) => {
-  try {
-    const response = await AxiosInstance.delete(url);
-    return response.data;
-  } catch (error) {
-    return error;
-  }
+  const response = await AxiosInstance.delete(url);
+  return response.data;
 }

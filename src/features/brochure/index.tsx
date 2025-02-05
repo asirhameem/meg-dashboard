@@ -1,10 +1,10 @@
 import { Breadcrumbs, Divider, Title } from "@mantine/core";
 import { Link } from "react-router-dom";
-import { useQuotations } from "../../hooks";
+import { useBrochures } from "../../hooks";
 import { DataTable } from "../../components";
 
-const Quotation = () => {
-  const { data, actions } = useQuotations();
+const Brochure = () => {
+  const { data, actions } = useBrochures();
   return (
     <>
       <Breadcrumbs>
@@ -12,15 +12,15 @@ const Quotation = () => {
           Home
         </Link>
         <Link to="/quotations" className="link-blue">
-          Quotations
+          Brochure
         </Link>
       </Breadcrumbs>
       <Title order={1} pb="md">
-        Quotations
+        Brochure
       </Title>
       <Divider mb="xl" />
       <DataTable columns={data.head} rows={data.body} actions={actions} />
     </>
   );
 };
-export default Quotation;
+export default Brochure;

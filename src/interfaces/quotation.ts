@@ -12,4 +12,5 @@ export interface IQuotation {
   product_interior_color_id: number;
   quantity: number;
   status: 'pending' | 'sent' | 'rejected';
+  product_model: string;
 }

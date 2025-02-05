@@ -49,12 +49,12 @@ export const PRODUCT_TABLE_HEADER: IDataTableHeader[] = [
         icon: 'view',
         text: "view",
       },
-      {
-        type: "edit",
-        display: 'icon',
-        icon: 'edit',
-        text: "edit",
-      },
+      // {
+      //   type: "edit",
+      //   display: 'icon',
+      //   icon: 'edit',
+      //   text: "edit",
+      // },
 
     ]
   }
@@ -122,7 +122,7 @@ export const PRODUCT_INTERIOR_TABLE_HEADER: IDataTableHeader[] = [
   {
     title: "Interior Image",
     key: "interior_image",
-    type: "text"
+    type: "image"
   },
   {
     title: "Interior Type",
@@ -135,10 +135,25 @@ export const PRODUCT_INTERIOR_TABLE_HEADER: IDataTableHeader[] = [
     type: "text"
   },
   {
-    title: "Description",
-    key: "interior_description",
-    type: "text"
-  },
+    title: "Action",
+    key: "action",
+    type: "action",
+    actions: [
+      {
+        type: "edit",
+        display: 'icon',
+        icon: 'edit',
+        text: "edit",
+      },
+      {
+        type: "delete",
+        display: 'icon',
+        icon: 'delete',
+        text: "delete",
+      },
+
+    ]
+  }
 ]
 
 export const PRODUCT_SPECIFICATION_TABLE_HEADER: IDataTableHeader[] = [
@@ -162,6 +177,26 @@ export const PRODUCT_SPECIFICATION_TABLE_HEADER: IDataTableHeader[] = [
     key: "specification_value",
     type: "text"
   },
+  {
+    title: "Action",
+    key: "action",
+    type: "action",
+    actions: [
+      {
+        type: "edit",
+        display: 'icon',
+        icon: 'edit',
+        text: "edit",
+      },
+      {
+        type: "delete",
+        display: 'icon',
+        icon: 'delete',
+        text: "delete",
+      },
+
+    ]
+  }
 ]
 
 export const SPECIFICATION_TABLE_HEADER: IDataTableHeader[] = [
@@ -206,7 +241,22 @@ export const SPECIFICATION_CATEGORY_TABLE_HEADER: IDataTableHeader[] = [
   {
     title: "Action",
     key: "action",
-    type: "action"
+    type: "action",
+    actions: [
+      {
+        type: "edit",
+        display: 'icon',
+        icon: 'edit',
+        text: "edit",
+      },
+      {
+        type: "delete",
+        display: 'icon',
+        icon: 'delete',
+        text: "delete",
+      },
+
+    ]
   }
 ]
 
@@ -244,18 +294,21 @@ export const CONFIGURATION_PAINT_TABLE_HEADER: IDataTableHeader[] = [
     title: "Action",
     key: "action",
     type: "action",
-    // actions: [
-    //   {
-    //     type: "paint",
-    //     title: "Add",
-    //     color: "primary"
-    //   },
-    //   {
-    //     type: "paint",
-    //     title: "Delete",
-    //     color: "red"
-    //   }
-    // ]
+    actions: [
+      {
+        type: "edit",
+        display: 'icon',
+        icon: 'edit',
+        text: "edit",
+      },
+      {
+        type: "delete",
+        display: 'icon',
+        icon: 'delete',
+        text: "delete",
+      },
+
+    ]
   }
 ]
 
@@ -270,15 +323,15 @@ export const CONFIGURATION_WHEEL_TABLE_HEADER: IDataTableHeader[] = [
     key: "name",
     type: "text"
   },
-  {
-    title: "Description",
-    key: "description",
-    type: "text"
-  },
+  // {
+  //   title: "Description",
+  //   key: "description",
+  //   type: "text"
+  // },
   {
     title: "Image",
     key: "image",
-    type: "text"
+    type: "image"
   },
   {
     title: "Status",
@@ -293,18 +346,21 @@ export const CONFIGURATION_WHEEL_TABLE_HEADER: IDataTableHeader[] = [
     title: "Action",
     key: "action",
     type: "action",
-    // actions: [
-    //   {
-    //     type: "paint",
-    //     title: "Add",
-    //     color: "primary"
-    //   },
-    //   {
-    //     type: "paint",
-    //     title: "Delete",
-    //     color: "red"
-    //   }
-    // ]
+    actions: [
+      {
+        type: "edit",
+        display: 'icon',
+        icon: 'edit',
+        text: "edit",
+      },
+      {
+        type: "delete",
+        display: 'icon',
+        icon: 'delete',
+        text: "delete",
+      },
+
+    ]
   }
 ]
 
@@ -327,7 +383,7 @@ export const CONFIGURATION_INTERIOR_COLOR_TABLE_HEADER: IDataTableHeader[] = [
   {
     title: "Image",
     key: "image",
-    type: "text"
+    type: "image"
   },
   {
     title: "Status",
@@ -342,18 +398,21 @@ export const CONFIGURATION_INTERIOR_COLOR_TABLE_HEADER: IDataTableHeader[] = [
     title: "Action",
     key: "action",
     type: "action",
-    // actions: [
-    //   {
-    //     type: "paint",
-    //     title: "Add",
-    //     color: "primary"
-    //   },
-    //   {
-    //     type: "paint",
-    //     title: "Delete",
-    //     color: "red"
-    //   }
-    // ]
+    actions: [
+      {
+        type: "edit",
+        display: 'icon',
+        icon: 'edit',
+        text: "edit",
+      },
+      {
+        type: "delete",
+        display: 'icon',
+        icon: 'delete',
+        text: "delete",
+      },
+
+    ]
   }
 ]
 
@@ -540,14 +599,19 @@ export const QUOTATION_TABLE_HEADER: IDataTableHeader[] = [
     type: 'text',
     width: '250px'
   },
+  // {
+  //   key: 'company',
+  //   title: 'Company',
+  //   type: 'text'
+  // },
+  // {
+  //   key: 'designation',
+  //   title: 'Designation',
+  //   type: 'text'
+  // },
   {
-    key: 'company',
-    title: 'Company',
-    type: 'text'
-  },
-  {
-    key: 'designation',
-    title: 'Designation',
+    key: 'product_model',
+    title: 'Product Model',
     type: 'text'
   },
   {
@@ -559,6 +623,38 @@ export const QUOTATION_TABLE_HEADER: IDataTableHeader[] = [
     title: "Action",
     key: "action",
     type: "action",
-    actions: []
+    actions: [
+      {
+        type: "view",
+        display: 'icon',
+        icon: 'view',
+        text: "view",
+      },
+
+    ]
+  }
+]
+
+export const BROCHURE_TABLE_HEADER: IDataTableHeader[] = [
+  {
+    key: 'name',
+    title: 'Name',
+    type: 'text'
+  },
+  {
+    key: 'email',
+    title: 'Email',
+    type: 'text'
+  },
+  {
+    key: 'phone',
+    title: 'Phone',
+    type: 'text',
+    width: '150px'
+  },
+  {
+    key: 'product_model',
+    title: 'Product Model',
+    type: 'text'
   }
 ]
