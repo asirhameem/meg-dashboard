@@ -121,8 +121,6 @@ const WheelsPage = () => {
       setSelectedRow(row as FormState);
     },
     delete: (row: unknown) => {
-      console.log(row);
-
       setSelectedDeleteRow(row as FormState);
       deleteConfirmationOpen();
     },

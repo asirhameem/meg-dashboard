@@ -7,7 +7,7 @@ export const API_END_POINTS: TApiEndPoint = {
   PRODUCTS_UPDATE: '/products',
   PRODUCTS_DETAILS: '/products/:product-id',
   PRODUCTS_INTERIOR_CREATE: '/products/interiors',
-  PRODUCTS_SPECIFICATION_CREATE: '/products/specifications',
+  PRODUCTS_SPECIFICATION_CREATE: '/products/:product-id/specifications',
   INTERIOR_TYPE: '/interior-types',
   PRODUCT_SPECIFICATION_WITH_CATEGORY: 'specifications/with-categories',
   PRODUCTS_CATEGORIES: '/categories',

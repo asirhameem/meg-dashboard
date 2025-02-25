@@ -8,4 +8,5 @@ export interface IFormComponentProps<T> {
 export interface IFormSelectOption {
   value: string
   label: string
+  uuid?: string
 }

@@ -129,6 +129,7 @@ export interface IProductSpecificationForm {
   specification_category_id?: number;
   specification_id?: number;
   value: string;
+  uuid: string;
 }
 
 

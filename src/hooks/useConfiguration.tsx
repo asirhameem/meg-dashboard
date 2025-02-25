@@ -8,6 +8,7 @@ import {
   CONFIGURATION_WHEEL_TABLE_HEADER,
   CONFIGURE_PLATFORM_FORM_INITIAL_STATE,
   DEFAULT_TABLE_STATE,
+  ENVIRONMENT_VARIABLES,
 } from "../constants";
 import {
   IDataTable,
@@ -222,8 +223,8 @@ export const useCreatePlatformInfo = () => {
   const handleSubmit = async (values: IConfigurationPlatformForm) => {
     const payload: IConfigurationPlatformForm = {
       ...values,
+      configuration_name: `${ENVIRONMENT_VARIABLES.APP_NAME}_${values.configuration_name}`,
     };
-
     createProduct(payload);
   };
 

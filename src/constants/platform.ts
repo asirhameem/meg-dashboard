@@ -59,22 +59,22 @@ export const PLATFORM_SECTION: IPlatformSection[] = [
         value: 'footer_company_phone',
         label: 'Footer Company Phone',
       },
-      {
-        value: 'footer_company_address',
-        label: 'Footer Company Address',
-      },
-      {
-        value: 'footer_business_hour_text',
-        label: 'Footer Business Hour Text',
-      },
-      {
-        value: 'footer_summary_title',
-        label: 'Footer Summary Title',
-      },
-      {
-        value: 'footer_summary_description',
-        label: 'Footer Summary Description',
-      },
+      // {
+      //   value: 'footer_company_address',
+      //   label: 'Footer Company Address',
+      // },
+      // {
+      //   value: 'footer_business_hour_text',
+      //   label: 'Footer Business Hour Text',
+      // },
+      // {
+      //   value: 'footer_summary_title',
+      //   label: 'Footer Summary Title',
+      // },
+      // {
+      //   value: 'footer_summary_description',
+      //   label: 'Footer Summary Description',
+      // },
       {
         value: 'footer_social_fb',
         label: 'Footer Social FB',
@@ -83,18 +83,18 @@ export const PLATFORM_SECTION: IPlatformSection[] = [
         value: 'footer_social_instagram',
         label: 'Footer Social Instagram',
       },
-      {
-        value: 'footer_social_twitter',
-        label: 'Footer Social Twitter',
-      },
-      {
-        value: 'footer_company_name',
-        label: 'Footer Company Name',
-      },
-      {
-        value: 'footer_banner_image',
-        label: 'Footer Banner Image',
-      }
+      // {
+      //   value: 'footer_company_name',
+      //   label: 'Footer Company Name',
+      // },
+      // {
+      //   value: 'footer_banner_image',
+      //   label: 'Footer Banner Image',
+      // },
+      // {
+      //   value: 'footer_logo',
+      //   label: 'Footer Logo',
+      // }
     ]
   },
   {

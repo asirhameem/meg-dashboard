@@ -35,6 +35,6 @@ export const productInteriorSchema = yup.object().shape({
 export const productSpecificationSchema = yup.object().shape({
   product_id: yup.number().optional(),
   specification_category_id: yup.number().required('specification category required'),
-  specification_id: yup.number().required('specification required'),
+  specification_id: yup.string().required('specification required'),
   value: yup.string().required('value required'),
 });

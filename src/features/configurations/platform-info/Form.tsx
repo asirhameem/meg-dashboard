@@ -16,16 +16,12 @@ const Form = ({
   const [isShowFileInput, setIsShowFileInput] = useState<boolean>(false);
 
   form.watch("section_name", (value) => {
-    console.log("value", value);
-
     setSpecification(
       PLATFORM_SECTION.find(
         (section) => String(section.value) === String(value.value)
       )?.configuration || []
     );
   });
-
-  console.log("specification", specification);
 
   form.watch("configuration_type", ({ value }) => {
     setIsShowFileInput(value === "image" || value === "video");

@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "react-query"
 import { GetData, PostData } from "../services"
 import { API_END_POINTS, DEFAULT_TABLE_STATE, PRODUCT_TABLE_HEADER, PRODUCT_CATEGORY_TABLE_HEADER, PRODUCT_INTERIOR_TABLE_HEADER, PRODUCT_SPECIFICATION_TABLE_HEADER, PRODUCT_FORM_INITIAL_STATE, PRODUCT_INTERIOR_FORM_INITIAL_STATE } from "../constants"
-import { IDataTable, IFormSelectOption, IInteriorType, IProductForm, IProductInteriorForm, IProductsCategories, IProductsInteriors, IProductSpecificationForm, IProductSpecificationsFrom, IProductSpecificationWithCategory, IProductsSpecifications, ISpecification, TProducts } from "../interfaces"
+import { IDataTable, IFormSelectOption, IInteriorType, IProductForm, IProductInteriorForm, IProductsCategories, IProductsInteriors, IProductSpecificationForm, IProductSpecificationWithCategory, IProductsSpecifications, ISpecification, TProducts } from "../interfaces"
 import { useEffect, useState } from "react"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { apiError, apiSuccess, replaceUrlParams } from "../helpers"
@@ -271,6 +271,15 @@ export const useCreateProductSpecification = () => {
   const { data: specificationCategoriesData, isError: hasSpecificationCategoriesError, isLoading: isSpecificationCategoriesLoading } = useQuery('specifications-with-categories', () => GetData<IProductSpecificationWithCategory[]>(API_END_POINTS.PRODUCT_SPECIFICATION_WITH_CATEGORY))
   const [specificationCategories, setSpecificationCategories] = useState<{ value: string, label: string, specifications: IFormSelectOption[] }[]>([])
 
+  const generateUrl = () => {
+    // const getSpecUuid = specificationCategories?.find((item) => item?.value === currentSpecificationCategory)?.specifications?.find((spec) => spec?.value === String(value?.specification_id))?.uuid || ''
+
+
+    return replaceUrlParams(API_END_POINTS.PRODUCTS_SPECIFICATION_CREATE, {
+      "product-id": params['product-id'],
+    })
+  }
+
   const {
     mutate: createProductSpecification,
     isLoading: isCreating,
@@ -278,15 +287,25 @@ export const useCreateProductSpecification = () => {
     data: createData,
     isSuccess: isCreateSuccess,
     error: createError
-  } = useMutation((value: IProductSpecificationsFrom) => PostData<IProductSpecificationsFrom>(API_END_POINTS.PRODUCTS_SPECIFICATION_CREATE, value))
+  } = useMutation((value: IProductSpecificationForm) => PostData<IProductSpecificationForm>(generateUrl(), value))
 
   const handleSubmit = async (values: IProductSpecificationForm) => {
-    const payload: IProductSpecificationsFrom = {
-      specifications: [{
-        product_id: Number(values.product_id),
-        specification_id: Number(values.specification_id),
-        value: values.value.trim()
-      }]
+    // console.log(values);
+
+    // const payload: IProductSpecificationsFrom = {
+    //   specifications: [{
+    //     product_id: Number(values.product_id),
+    //     specification_id: values.specification_id,
+    //     value: values.value.trim(),
+    //     uuid: values.uuid,
+    //   }]
+    // }
+
+    const payload: IProductSpecificationForm = {
+      product_id: Number(values.product_id),
+      specification_id: Number(values.specification_id),
+      value: values.value.trim(),
+      uuid: values.uuid,
     }
 
     createProductSpecification(payload);
@@ -303,6 +322,7 @@ export const useCreateProductSpecification = () => {
 
   useEffect(() => {
     if (!isSpecificationCategoriesLoading && !hasSpecificationCategoriesError && specificationCategoriesData?.data?.length) {
+
       const tempSpecificationCategories = specificationCategoriesData.data.map((item: IProductSpecificationWithCategory) => {
         return {
           value: String(item.id),
@@ -310,12 +330,13 @@ export const useCreateProductSpecification = () => {
           specifications: item.specifications.map((specification: ISpecification) => {
             return {
               value: String(specification.id),
-              label: specification.name
+              label: specification.name,
+              uuid: specification.uuid,
             }
           })
         }
       })
-      tempSpecificationCategories.unshift({ value: '', label: 'Choose one', specifications: [{ value: '', label: "" }] });
+      tempSpecificationCategories.unshift({ value: '', label: 'Choose one', specifications: [{ value: '', label: "", uuid: "" }] });
       setSpecificationCategories(tempSpecificationCategories)
     }
   }, [specificationCategoriesData, hasSpecificationCategoriesError, isSpecificationCategoriesLoading])
