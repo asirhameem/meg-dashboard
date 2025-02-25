@@ -43,6 +43,7 @@ export const PRODUCT_SPECIFICATION_FORM_INITIAL_STATE: IProductSpecificationForm
   specification_category_id: undefined,
   specification_id: undefined,
   value: '',
+  uuid: '',
 }
 
 export const CONFIGURE_PLATFORM_FORM_INITIAL_STATE: IConfigurationPlatformForm = {
