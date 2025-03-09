@@ -19,14 +19,14 @@ const OrderItemInformation = ({ order }: OrderItemInformationProps) => {
       const head = ORDER_TABLE_ITEM_HEADER;
       const body = order.items.map((item: IOrderItem) => {
         return {
-          id: item.id,
-          uuid: item.uuid,
-          title: item.product.title,
-          selling_cost: item.product.selling_cost,
-          booking_cost: item.product.booking_cost,
-          "paint.name": item.product.paint?.name,
-          "wheel.name": item.product.wheel?.name,
-          "interior_color.name": item.product.interior_color?.name,
+          id: item?.id,
+          uuid: item?.uuid,
+          title: item?.product?.title,
+          selling_cost: item?.product?.selling_cost,
+          booking_cost: item?.product?.booking_cost,
+          "paint.name": item?.product?.paint?.name,
+          "wheel.name": item?.product?.wheel?.name,
+          "interior_color.name": item?.product?.interior_color?.name,
         };
       });
       setDataTableState({ head, body });
