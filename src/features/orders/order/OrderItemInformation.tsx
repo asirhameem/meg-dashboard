@@ -24,9 +24,9 @@ const OrderItemInformation = ({ order }: OrderItemInformationProps) => {
           title: item.product.title,
           selling_cost: item.product.selling_cost,
           booking_cost: item.product.booking_cost,
-          "paint.name": item.product.paint.name,
-          "wheel.name": item.product.wheel.name,
-          "interior_color.name": item.product.interior_color.name,
+          "paint.name": item.product.paint?.name,
+          "wheel.name": item.product.wheel?.name,
+          "interior_color.name": item.product.interior_color?.name,
         };
       });
       setDataTableState({ head, body });
